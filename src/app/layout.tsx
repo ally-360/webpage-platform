@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/theme";
+import { Header, Footer } from "@/components";
+import { Box } from "@mui/material";
+import { HEADER } from "@/config/layout";
 
 const inter = Inter({
   weight: ['300', '400', '500', '600', '700'],
@@ -64,7 +67,11 @@ export default function RootLayout({
     <html lang="es" className={inter.variable}>
       <body className="antialiased">
         <ThemeProvider>
-          {children}
+          <Header />
+          <Box component="main" sx={{ pt: { xs: `${HEADER.H_MOBILE}px`, md: `${HEADER.H_DESKTOP}px` } }}>
+            {children}
+          </Box>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
