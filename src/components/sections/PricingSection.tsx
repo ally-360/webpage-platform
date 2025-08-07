@@ -16,6 +16,8 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { shadows } from '../../config/theme-config';
+import { FreeTrialButton } from '@/components/common';
+import { useExternalRedirect } from '@/hooks/use-external-redirect';
 import {
   Check as CheckIcon,
   Star as StarIcon,
@@ -80,6 +82,87 @@ const pricingPlans = [
 ];
 
 export default function PricingSection() {
+  const { requestDemo } = useExternalRedirect();
+
+  const renderPricingButton = (plan: typeof pricingPlans[0]) => {
+    // Si el botón contiene "Gratis", "Gratuita" o "30 días", usar FreeTrialButton
+    if (plan.buttonText.includes('Gratis') || plan.buttonText.includes('Gratuita') || plan.buttonText.includes('30 días')) {
+      return (
+        <FreeTrialButton
+          variant={plan.buttonVariant}
+          size="large"
+          fullWidth
+          trialDays={30}
+          returnUrl={`/planes/${plan.name.toLowerCase()}`}
+          sx={{
+            py: 1.5,
+            fontWeight: 600,
+            borderRadius: 2,
+            ...(plan.popular && {
+              bgcolor: 'primary.main',
+              color: 'primary.contrastText',
+              '&:hover': {
+                bgcolor: 'primary.dark',
+              },
+            }),
+          }}
+        >
+          {plan.buttonText}
+        </FreeTrialButton>
+      );
+    }
+    
+    // Si es "Contactar Ventas", usar requestDemo
+    if (plan.buttonText.includes('Contactar') || plan.buttonText.includes('Ventas')) {
+      return (
+        <Button
+          variant={plan.buttonVariant}
+          color="primary"
+          size="large"
+          fullWidth
+          onClick={() => requestDemo(`/planes/${plan.name.toLowerCase()}`)}
+          sx={{
+            py: 1.5,
+            fontWeight: 600,
+            borderRadius: 2,
+            ...(plan.popular && {
+              bgcolor: 'primary.main',
+              color: 'primary.contrastText',
+              '&:hover': {
+                bgcolor: 'primary.dark',
+              },
+            }),
+          }}
+        >
+          {plan.buttonText}
+        </Button>
+      );
+    }
+
+    // Botón por defecto para otros casos
+    return (
+      <FreeTrialButton
+        variant={plan.buttonVariant}
+        size="large"
+        fullWidth
+        trialDays={30}
+        sx={{
+          py: 1.5,
+          fontWeight: 600,
+          borderRadius: 2,
+          ...(plan.popular && {
+            bgcolor: 'primary.main',
+            color: 'primary.contrastText',
+            '&:hover': {
+              bgcolor: 'primary.dark',
+            },
+          }),
+        }}
+      >
+        {plan.buttonText}
+      </FreeTrialButton>
+    );
+  };
 
   return (
     <Box
@@ -244,26 +327,7 @@ export default function PricingSection() {
                   </List>
 
                   {/* CTA Button */}
-                  <Button
-                    variant={plan.buttonVariant}
-                    color="primary"
-                    size="large"
-                    fullWidth
-                    sx={{
-                      py: 1.5,
-                      fontWeight: 600,
-                      borderRadius: 2,
-                      ...(plan.popular && {
-                        bgcolor: 'primary.main',
-                        color: 'primary.contrastText',
-                        '&:hover': {
-                          bgcolor: 'primary.dark',
-                        },
-                      }),
-                    }}
-                  >
-                    {plan.buttonText}
-                  </Button>
+                  {renderPricingButton(plan)}
                 </CardContent>
               </Card>
             </motion.div>

@@ -4,6 +4,7 @@ import { Box, Container, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { FreeTrialButton } from '@/components/common';
 import { brandGradients, shadows } from '../../config/theme-config';
 
 const fadeInUp = {
@@ -138,10 +139,10 @@ export default function HeroSection() {
                   spacing={2}
                   sx={{ mb: 4 }}
                 >
-                  <Button
-                    variant="contained"
+                  <FreeTrialButton
                     size="large"
                     endIcon={<ArrowForwardIcon />}
+                    trialDays={30}
                     sx={{
                       px: 4,
                       py: 1.5,
@@ -162,7 +163,7 @@ export default function HeroSection() {
                     }}
                   >
                     Probar gratis 30 días
-                  </Button>
+                  </FreeTrialButton>
                   <Button
                     variant="outlined"
                     size="large"

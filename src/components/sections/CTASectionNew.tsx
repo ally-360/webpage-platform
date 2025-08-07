@@ -6,8 +6,11 @@ import {
   GetApp as GetAppIcon,
 } from '@mui/icons-material';
 import { CTASection as CTAComponent } from '../common';
+import { useExternalRedirect } from '@/hooks/use-external-redirect';
 
 export default function CTASection() {
+  const { startFreeTrial } = useExternalRedirect();
+
   return (
     <CTAComponent
       id="cta-final"
@@ -17,7 +20,7 @@ export default function CTASection() {
       variant="cta"
       primaryAction={{
         label: "Comenzar Prueba Gratuita",
-        href: "/contacto",
+        onClick: () => startFreeTrial(30, "/"),
         startIcon: <PlayArrowIcon />,
       }}
       secondaryAction={{

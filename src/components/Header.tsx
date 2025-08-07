@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import {
   AppBar,
   Toolbar,
@@ -14,6 +13,7 @@ import {
 // hooks
 import { useOffSetTop } from '@/hooks/use-off-set-top';
 import { useResponsive } from '@/hooks/use-responsive';
+import { useExternalRedirect } from '@/hooks/use-external-redirect';
 // components
 import Logo from '@/components/logo';
 import NavDesktop from '@/components/nav/NavDesktop';
@@ -27,6 +27,7 @@ export default function Header() {
   const theme = useTheme();
   const mdUp = useResponsive('up', 'md');
   const offsetTop = useOffSetTop();
+  const { requestDemo } = useExternalRedirect();
 
   return (
     <AppBar
@@ -75,8 +76,7 @@ export default function Header() {
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
             <Button
-              component={Link}
-              href="/contacto"
+              onClick={() => requestDemo()}
               variant="contained"
               sx={{
                 borderRadius: 2,
