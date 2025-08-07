@@ -14,55 +14,31 @@ import {
 import { motion } from 'framer-motion';
 import {
   Storefront as StorefrontIcon,
-  Restaurant as RestaurantIcon,
-  LocalShipping as LocalShippingIcon,
-  MedicalServices as MedicalServicesIcon,
-  Build as BuildIcon,
-  School as SchoolIcon,
+  BusinessCenter as BusinessCenterIcon,
+  Business as BusinessIcon,
 } from '@mui/icons-material';
 
 const targetSegments = [
   {
     icon: <StorefrontIcon />,
-    title: 'Retail y Comercio',
-    description: 'Tiendas, boutiques, supermercados y centros comerciales.',
-    color: '#1976d2',
-    businesses: ['Tiendas de ropa', 'Ferreterías', 'Supermercados', 'Farmacias'],
+    title: 'Emprendedores y microempresas',
+    description: 'Hasta 5 empleados. Maneja tu operación sin enredos.',
+    color: '#004C97',
+    businesses: ['Tiendas de barrio', 'Consultorios', 'Talleres', 'Servicios profesionales'],
   },
   {
-    icon: <RestaurantIcon />,
-    title: 'Restaurantes y Food Service',
-    description: 'Restaurantes, cafeterías, panaderías y servicios de catering.',
-    color: '#ed6c02',
-    businesses: ['Restaurantes', 'Cafeterías', 'Panaderías', 'Food trucks'],
+    icon: <BusinessCenterIcon />,
+    title: 'Pequeñas empresas',
+    description: 'De 5 a 20 empleados. Lleva el control de tu negocio y crece con datos.',
+    color: '#00B0F0',
+    businesses: ['Restaurantes', 'Boutiques', 'Ferreterías', 'Farmacias'],
   },
   {
-    icon: <LocalShippingIcon />,
-    title: 'Distribución y Logística',
-    description: 'Distribuidoras, importadoras y empresas de logística.',
-    color: '#2e7d32',
-    businesses: ['Distribuidoras', 'Importadoras', 'Transportadoras', 'Almacenes'],
-  },
-  {
-    icon: <MedicalServicesIcon />,
-    title: 'Servicios de Salud',
-    description: 'Consultorios, clínicas, laboratorios y centros médicos.',
-    color: '#d32f2f',
-    businesses: ['Consultorios', 'Laboratorios', 'Clínicas', 'Ópticas'],
-  },
-  {
-    icon: <BuildIcon />,
-    title: 'Servicios Técnicos',
-    description: 'Talleres, servicios técnicos y empresas de mantenimiento.',
-    color: '#7b1fa2',
-    businesses: ['Talleres', 'Electricistas', 'Plomería', 'Carpintería'],
-  },
-  {
-    icon: <SchoolIcon />,
-    title: 'Educación y Capacitación',
-    description: 'Instituciones educativas, academias y centros de formación.',
-    color: '#1565c0',
-    businesses: ['Colegios', 'Academias', 'Universidades', 'Institutos'],
+    icon: <BusinessIcon />,
+    title: 'Empresas medianas',
+    description: 'Más de 20 empleados. Optimiza tu operación con reportes, multiusuario y KPIs.',
+    color: '#004C97',
+    businesses: ['Distribuidoras', 'Cadenas de tiendas', 'Manufactureras', 'Importadoras'],
   },
 ];
 
@@ -96,7 +72,10 @@ export default function TargetSegmentSection() {
                 mb: 2,
               }}
             >
-              Diseñado para tu Sector
+              Hecho para las{' '}
+              <Box component="span" sx={{ color: '#00B0F0' }}>
+                PyMEs colombianas
+              </Box>
             </Typography>
             <Typography
               variant="h6"
@@ -106,10 +85,10 @@ export default function TargetSegmentSection() {
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.125rem' },
                 lineHeight: 1.6,
+                color: '#333333',
               }}
             >
-              Ally360 se adapta a las necesidades específicas de diferentes sectores empresariales, 
-              ofreciendo funcionalidades personalizadas para cada tipo de negocio.
+              Desde la tienda del barrio hasta la empresa con múltiples sucursales. Ally360 se adapta a tu operación.
             </Typography>
           </Box>
         </motion.div>

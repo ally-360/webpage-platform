@@ -9,49 +9,42 @@ import {
   Stack,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import InventoryIcon from '@mui/icons-material/Inventory';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import CloudIcon from '@mui/icons-material/Cloud';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import PeopleIcon from '@mui/icons-material/People';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
-import SecurityIcon from '@mui/icons-material/Security';
 
 const benefits = [
   {
-    icon: InventoryIcon,
-    title: 'Gestión de Inventario Inteligente',
-    description: 'Control completo de stock, alertas automáticas de reposición y trazabilidad total de productos.',
-    color: '#2196f3',
+    icon: LightbulbIcon,
+    title: 'Simple y accesible',
+    description: 'Diseñado para que cualquier empresario lo use, sin necesidad de conocimientos técnicos.',
+    color: '#004C97',
+  },
+  {
+    icon: DashboardIcon,
+    title: 'Todo en un solo lugar',
+    description: 'Facturación electrónica, inventario, reportes, POS y más, integrados y fáciles de usar.',
+    color: '#00B0F0',
+  },
+  {
+    icon: VerifiedIcon,
+    title: 'Cumples con la DIAN sin estrés',
+    description: 'Genera, valida y envía tus facturas electrónicas conforme a la Resolución 000042.',
+    color: '#004C97',
+  },
+  {
+    icon: CloudIcon,
+    title: '100% en la nube',
+    description: 'Accede desde cualquier dispositivo, en cualquier momento.',
+    color: '#00B0F0',
   },
   {
     icon: TrendingUpIcon,
-    title: 'Ventas & CRM Integrado',
-    description: 'Gestiona clientes, cotizaciones, órdenes y seguimiento postventa en una sola plataforma.',
-    color: '#4caf50',
-  },
-  {
-    icon: AccountBalanceIcon,
-    title: 'Finanzas & Contabilidad',
-    description: 'Facturación electrónica, reportes financieros y cumplimiento tributario colombiano automático.',
-    color: '#ff9800',
-  },
-  {
-    icon: PeopleIcon,
-    title: 'Recursos Humanos',
-    description: 'Nómina, control de asistencia y gestión de empleados adaptado a la legislación colombiana.',
-    color: '#9c27b0',
-  },
-  {
-    icon: AnalyticsIcon,
-    title: 'Análisis & Reportes',
-    description: 'Dashboard ejecutivo con métricas clave y reportes personalizables para tomar mejores decisiones.',
-    color: '#f44336',
-  },
-  {
-    icon: SecurityIcon,
-    title: 'Seguridad & Respaldos',
-    description: 'Encriptación de datos, respaldos automáticos y cumplimiento con normativas de privacidad.',
-    color: '#607d8b',
+    title: 'Crece con tu empresa',
+    description: 'Empieza pequeño y escala sin cambiar de sistema.',
+    color: '#004C97',
   },
 ];
 
@@ -90,14 +83,13 @@ export default function BenefitsSection() {
                   fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
                   fontWeight: 700,
                   mb: 2,
-                  color: 'text.primary',
+                  color: '#004C97',
                 }}
               >
-                Todo lo que necesitas para{' '}
-                <Box component="span" sx={{ color: 'primary.main' }}>
-                  hacer crecer
-                </Box>{' '}
-                tu negocio
+                ¿Por qué elegir{' '}
+                <Box component="span" sx={{ color: '#00B0F0' }}>
+                  Ally360?
+                </Box>
               </Typography>
             </motion.div>
 

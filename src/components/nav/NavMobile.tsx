@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Drawer,
   Button,
@@ -23,9 +24,17 @@ interface NavMobileProps {
 
 export default function NavMobile({ data }: NavMobileProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(path);
+  };
 
   return (
     <>
@@ -62,6 +71,13 @@ export default function NavMobile({ data }: NavMobileProps) {
                   justifyContent: 'flex-start',
                   py: 1.5,
                   px: 2,
+                  color: isActive(link.path) ? 'primary.main' : 'text.primary',
+                  fontWeight: isActive(link.path) ? 600 : 500,
+                  backgroundColor: isActive(link.path) ? 'primary.lighter' : 'transparent',
+                  '&:hover': {
+                    backgroundColor: 'primary.lighter',
+                    color: 'primary.main',
+                  },
                 }}
               >
                 <ListItemText primary={link.title} />

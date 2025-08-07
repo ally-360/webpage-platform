@@ -26,18 +26,30 @@ import { navConfig } from '@/config/navigation';
 export default function Header() {
   const theme = useTheme();
   const mdUp = useResponsive('up', 'md');
-  const offsetTop = useOffSetTop(HEADER.H_DESKTOP);
+  const offsetTop = useOffSetTop();
 
   return (
     <AppBar
       position="fixed"
+      elevation={0}
       sx={{
-        backgroundColor: offsetTop ? 'rgba(255, 255, 255, 0.9)' : 'background.paper',
+        backgroundColor: offsetTop 
+          ? 'rgba(255, 255, 255, 0.95)' 
+          : 'transparent',
         backdropFilter: offsetTop ? 'blur(20px)' : 'none',
-        borderBottom: '1px solid',
+        borderBottom: offsetTop ? '1px solid' : 'none',
         borderColor: 'divider',
-        boxShadow: offsetTop ? theme.shadows[8] : 'none',
+        boxShadow: offsetTop ? theme.shadows[4] : 'none',
         color: 'text.primary',
+        transition: theme.transitions.create([
+          'background-color', 
+          'backdrop-filter', 
+          'border-bottom', 
+          'box-shadow'
+        ], {
+          duration: theme.transitions.duration.standard,
+          easing: theme.transitions.easing.easeInOut,
+        }),
       }}
     >
       <Toolbar
@@ -45,11 +57,11 @@ export default function Header() {
         sx={{
           height: {
             xs: HEADER.H_MOBILE,
-            md: HEADER.H_DESKTOP,
+            md: offsetTop ? HEADER.H_DESKTOP_OFFSET : HEADER.H_DESKTOP,
           },
           transition: theme.transitions.create(['height'], {
             easing: theme.transitions.easing.easeInOut,
-            duration: theme.transitions.duration.shorter,
+            duration: theme.transitions.duration.standard,
           }),
         }}
       >
@@ -71,8 +83,15 @@ export default function Header() {
                 py: 1,
                 fontWeight: 600,
                 boxShadow: theme.shadows[4],
+                transition: theme.transitions.create([
+                  'transform', 
+                  'box-shadow'
+                ], {
+                  duration: theme.transitions.duration.short,
+                }),
                 '&:hover': {
                   boxShadow: theme.shadows[8],
+                  transform: 'translateY(-1px)',
                 },
               }}
             >

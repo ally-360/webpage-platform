@@ -80,22 +80,27 @@ export default function WhatIsAlly360Section() {
                 fontWeight: 700,
                 fontSize: { xs: '2rem', md: '2.5rem' },
                 mb: 2,
+                color: '#004C97',
               }}
             >
-              ¿Qué es Ally360?
+              Más que un software,{' '}
+              <Box component="span" sx={{ color: '#00B0F0' }}>
+                tu aliado empresarial
+              </Box>
             </Typography>
             <Typography
               variant="h6"
               color="text.secondary"
               sx={{
-                maxWidth: 600,
+                maxWidth: 800,
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.125rem' },
                 lineHeight: 1.6,
+                color: '#333333',
               }}
             >
-              Un sistema ERP completo diseñado específicamente para pequeñas y medianas empresas colombianas. 
-              Integra todas las áreas de tu negocio en una sola plataforma.
+              Ally360 es un sistema ERP en la nube diseñado para emprendedores, micro, pequeñas y medianas empresas en Colombia. 
+              Centraliza tu operación, reduce errores, cumple con la DIAN y mejora tus decisiones… sin complicarte la vida.
             </Typography>
           </Box>
         </motion.div>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Stack, Button } from '@mui/material';
 
 interface NavDesktopProps {
@@ -13,6 +14,15 @@ interface NavDesktopProps {
 }
 
 export default function NavDesktop({ data }: NavDesktopProps) {
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(path);
+  };
+
   return (
     <Stack
       component="nav"
@@ -30,13 +40,30 @@ export default function NavDesktop({ data }: NavDesktopProps) {
           href={link.path}
           variant="text"
           sx={{
-            color: 'text.primary',
-            fontWeight: 500,
+            color: isActive(link.path) ? 'primary.main' : 'text.primary',
+            fontWeight: isActive(link.path) ? 600 : 500,
+            boxShadow: 'none',
             fontSize: '0.95rem',
+            position: 'relative',
             '&:hover': {
               color: 'primary.main',
               backgroundColor: 'transparent',
+              boxShadow: 'none',
             },
+            ...(isActive(link.path) && {
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -4,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '60%',
+                height: 2,
+                backgroundColor: 'primary.main',
+                borderRadius: 1,
+                transition: 'all 0.3s ease-in-out',
+              },
+            }),
           }}
         >
           {link.title}

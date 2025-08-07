@@ -141,7 +141,7 @@ export const theme = createTheme({
           letterSpacing: '0.02em',
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.12)',
+            boxShadow: '0 4px 18px rgba(0, 0, 0, 0.12)',
           },
         },
         contained: {
