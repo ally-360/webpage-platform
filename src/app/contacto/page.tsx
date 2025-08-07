@@ -1,22 +1,17 @@
 import { Metadata } from 'next';
-import { Box, Container, Typography } from '@mui/material';
+import ContactoPage from './ContactoPage';
 
 export const metadata: Metadata = {
-  title: 'Contacto - Ally360',
-  description: 'Ponte en contacto con nosotros. Solicita una demo, cotización o resuelve tus dudas.',
+  title: 'Contáctanos - Ally360 ERP en la nube para PYMEs',
+  description: '¿Tienes preguntas o quieres una demo? Estamos para ti 24/7. Nuestro equipo está listo para ponerse la 10 por tu negocio. Contáctanos por WhatsApp, teléfono o formulario.',
+  keywords: 'contacto Ally360, soporte ERP, demo Ally360, WhatsApp empresarial, soporte 24/7',
+  openGraph: {
+    title: 'Contáctanos - Ally360 ERP',
+    description: 'Soporte 24/7 personalizado para tu PYME. ¡Estamos para ponerte la 10!',
+    type: 'website',
+  },
 };
 
-export default function ContactoPage() {
-  return (
-    <Container maxWidth="lg">
-      <Box sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h1" gutterBottom>
-          Contacto
-        </Typography>
-        <Typography variant="h6" color="text.secondary">
-          Página en construcción - Próximamente formulario de contacto y información
-        </Typography>
-      </Box>
-    </Container>
-  );
+export default function Page() {
+  return <ContactoPage />;
 }
