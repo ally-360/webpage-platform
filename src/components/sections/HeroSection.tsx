@@ -26,13 +26,13 @@ export default function HeroSection() {
       component="main"
       sx={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 200px)",
         display: "flex",
         alignItems: "center",
         background: brandGradients.subtle.blue,
         color: "#333333",
         overflow: "hidden",
-        pt: { xs: 9, md: 11 }, // Account for header height
+        pt: { xs: 9, md: 4 }, // Account for header height
       }}
     >
       {/* Background decoration */}
@@ -233,25 +233,6 @@ export default function HeroSection() {
                     height: { xs: 300, sm: 400, md: 500 },
                   }}
                 >
-                  {/* Illustration placeholder with modern design */}
-                  <Box
-                    sx={{
-                      width: "100%",
-                      maxWidth: 480,
-                      height: "100%",
-                      background:
-                        brandGradients.card,
-                      borderRadius: 4,
-                      backdropFilter: "blur(20px)",
-                      border: "1px solid rgba(0, 176, 240, 0.2)",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "relative",
-                      overflow: "hidden",
-                    }}
-                  >
                     {/* Background pattern */}
                     <Box
                       sx={{
@@ -260,59 +241,12 @@ export default function HeroSection() {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundImage: `
-                          radial-gradient(circle at 30% 20%, rgba(0, 176, 240, 0.1) 0%, transparent 50%),
-                          radial-gradient(circle at 70% 80%, rgba(0, 76, 151, 0.08) 0%, transparent 50%)
-                        `,
+                        backgroundImage: "url('/logo/Macbook_Pro_ally_login.svg')",
+                        backgroundSize: "contain",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                       }}
                     />
-
-                    {/* Dashboard mockup elements */}
-                    <Box
-                      sx={{
-                        position: "relative",
-                        zIndex: 1,
-                        textAlign: "center",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: 80,
-                          height: 80,
-                          backgroundColor: "#004C97",
-                          borderRadius: "20px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          mb: 3,
-                          mx: "auto",
-                          boxShadow: shadows.hero,
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            fontSize: "2rem",
-                            fontWeight: "bold",
-                            color: "#FFFFFF",
-                          }}
-                        >
-                          📊
-                        </Typography>
-                      </Box>
-                      <Typography
-                        variant="h6"
-                        sx={{ color: "#004C97", mb: 2, fontWeight: 600 }}
-                      >
-                        Dashboard Inteligente
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "#333333", maxWidth: 280, mx: "auto" }}
-                      >
-                        Visualiza el estado de tu negocio en tiempo real con
-                        gráficos y métricas clave
-                      </Typography>
-                    </Box>
 
                     {/* Floating elements for visual interest */}
                     <motion.div
@@ -349,7 +283,7 @@ export default function HeroSection() {
                       }}
                       style={{
                         position: "absolute",
-                        bottom: "20%",
+                        top: "10%",
                         left: "10%",
                       }}
                     >
@@ -369,7 +303,6 @@ export default function HeroSection() {
                       </Box>
                     </motion.div>
                   </Box>
-                </Box>
               </motion.div>
             </Box>
           </Box>
