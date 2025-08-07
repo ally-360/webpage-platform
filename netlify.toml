@@ -11,9 +11,6 @@
   
   # Optimizaciones para Next.js
   NEXT_TELEMETRY_DISABLED = "1"
-  
-  # No usar NODE_ENV=production aquí para permitir devDependencies
-  # NODE_ENV = "production"
 
 # Plugin de Next.js para Netlify
 [[plugins]]
@@ -25,18 +22,11 @@
   to = "/.netlify/functions/nextjs/:splat"
   status = 200
   
-# Redirecciones para formularios de Netlify
+# Redirecciones para formularios de contacto
 [[redirects]]
   from = "/contact"
   to = "/contacto"
   status = 301
-  
-# Manejo de SPA para rutas client-side
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
 
 # Headers de seguridad
 [[headers]]
