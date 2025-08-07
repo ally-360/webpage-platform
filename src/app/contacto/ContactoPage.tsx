@@ -153,18 +153,23 @@ export default function ContactoPage() {
     setSubmitStatus(null);
 
     try {
-      // Create form data for Netlify
+      // Crear FormData con todos los campos del formulario
       const formElement = event.currentTarget;
-      const formDataToSend = new FormData(formElement);
+      const formData = new FormData(formElement);
       
+      // Agregar campos manualmente para asegurar compatibilidad
+      formData.append('form-name', 'contact');
+      
+      // Método recomendado para Netlify Forms
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSend as unknown as Record<string, string>).toString(),
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
+        // Limpiar formulario después del envío exitoso
         setFormData({
           name: '',
           email: '',
@@ -172,11 +177,12 @@ export default function ContactoPage() {
           company: '',
           message: '',
         });
+        setErrors({});
       } else {
-        throw new Error('Error al enviar el formulario');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error enviando formulario:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -335,18 +341,23 @@ export default function ContactoPage() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                action="/contacto?success=true"
                 onSubmit={handleSubmit}
               >
                 {/* Netlify form setup */}
                 <input type="hidden" name="form-name" value="contact" />
                 
-                {/* Honeypot field */}
+                {/* Honeypot field para prevenir spam */}
                 <Box sx={{ display: 'none' }}>
-                  <TextField
-                    name="bot-field"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
+                  <label>
+                    No llenes este campo si eres humano:
+                    <input 
+                      name="bot-field" 
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </label>
                 </Box>
 
                 <Box

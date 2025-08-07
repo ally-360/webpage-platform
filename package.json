@@ -7,7 +7,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf .next out",
+    "build:analyze": "ANALYZE=true npm run build",
+    "build:prod": "NODE_ENV=production npm run build",
+    "export": "next export",
+    "postbuild": "echo 'Build completed successfully!'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -36,10 +41,11 @@
     "yup": "^1.7.0"
   },
   "engines": {
-  "node": "18.x"
+    "node": "18.x"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^5.12.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

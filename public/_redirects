@@ -1,0 +1,8 @@
+# Redirecciones para API routes de Next.js
+/api/*  /.netlify/functions/nextjs/:splat  200
+
+# Redirecciones de formularios
+/contact  /contacto  301
+
+# Fallback para SPA routing
+/*  /index.html  200
