@@ -2,6 +2,7 @@
 
 import { createTheme } from '@mui/material/styles';
 import { Inter } from 'next/font/google';
+import { brandColors, shadows, borderRadius } from '../config/theme-config';
 
 const inter = Inter({
   weight: ['300', '400', '500', '600', '700'],
@@ -9,48 +10,8 @@ const inter = Inter({
   display: 'swap',
 });
 
-// Ally360 brand colors based on typical ERP aesthetics
-const ally360Colors = {
-  primary: {
-    main: '#1976d2', // Professional blue
-    light: '#42a5f5',
-    dark: '#1565c0',
-    contrastText: '#ffffff',
-  },
-  secondary: {
-    main: '#2e7d32', // Success green
-    light: '#66bb6a',
-    dark: '#1b5e20',
-    contrastText: '#ffffff',
-  },
-  success: {
-    main: '#2e7d32',
-    light: '#4caf50',
-    dark: '#1b5e20',
-  },
-  warning: {
-    main: '#ed6c02',
-    light: '#ff9800',
-    dark: '#e65100',
-  },
-  error: {
-    main: '#d32f2f',
-    light: '#ef5350',
-    dark: '#c62828',
-  },
-  grey: {
-    50: '#fafafa',
-    100: '#f5f5f5',
-    200: '#eeeeee',
-    300: '#e0e0e0',
-    400: '#bdbdbd',
-    500: '#9e9e9e',
-    600: '#757575',
-    700: '#616161',
-    800: '#424242',
-    900: '#212121',
-  },
-};
+// Ally360 brand colors - now using centralized config
+const ally360Colors = brandColors;
 
 export const theme = createTheme({
   typography: {
@@ -127,13 +88,13 @@ export const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: parseInt(borderRadius.medium),
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '8px',
+          borderRadius: borderRadius.medium,
           padding: '10px 24px',
           fontSize: '0.9rem',
           fontWeight: 600,
@@ -141,12 +102,12 @@ export const theme = createTheme({
           letterSpacing: '0.02em',
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 4px 18px rgba(0, 0, 0, 0.12)',
+            boxShadow: shadows.button,
           },
         },
         contained: {
           '&:hover': {
-            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.15)',
+            boxShadow: shadows.buttonHover,
           },
         },
         outlined: {
@@ -164,10 +125,10 @@ export const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: '16px',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+          borderRadius: borderRadius.xl,
+          boxShadow: shadows.card,
           '&:hover': {
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
+            boxShadow: shadows.cardHover,
           },
         },
       },

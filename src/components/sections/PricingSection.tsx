@@ -13,9 +13,9 @@ import {
   ListItemIcon,
   ListItemText,
   Chip,
-  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import { shadows } from '../../config/theme-config';
 import {
   Check as CheckIcon,
   Star as StarIcon,
@@ -80,7 +80,6 @@ const pricingPlans = [
 ];
 
 export default function PricingSection() {
-  const theme = useTheme();
 
   return (
     <Box
@@ -164,7 +163,7 @@ export default function PricingSection() {
                   transform: plan.popular ? 'scale(1.05)' : 'scale(1)',
                   '&:hover': {
                     borderColor: 'primary.main',
-                    boxShadow: theme.shadows[12],
+                    boxShadow: shadows.pricing,
                     transform: plan.popular ? 'scale(1.05)' : 'translateY(-4px)',
                   },
                 }}

@@ -14,6 +14,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import CloudIcon from '@mui/icons-material/Cloud';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import { shadows } from '../../config/theme-config';
 
 const benefits = [
   {
@@ -129,7 +130,7 @@ export default function BenefitsSection() {
                       transition: 'all 0.3s ease',
                       '&:hover': {
                         transform: 'translateY(-8px)',
-                        boxShadow: '0 12px 40px rgba(0, 0, 0, 0.1)',
+                        boxShadow: shadows.cardHover,
                       },
                     }}
                   >
@@ -218,7 +219,7 @@ export default function BenefitsSection() {
                     '&:hover': {
                       backgroundColor: 'primary.dark',
                       transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(25, 118, 210, 0.3)',
+                      boxShadow: shadows.hero,
                     },
                   }}
                 >

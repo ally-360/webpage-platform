@@ -4,6 +4,7 @@ import { Box, Container, Typography, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { brandGradients, shadows } from '../../config/theme-config';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -28,8 +29,7 @@ export default function HeroSection() {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        background:
-          "linear-gradient(135deg, rgba(0, 176, 240, 0.3) 0%, rgba(0, 76, 151, 0.07) 100%)",
+        background: brandGradients.subtle.blue,
         color: "#333333",
         overflow: "hidden",
         pt: { xs: 9, md: 11 }, // Account for header height
@@ -152,11 +152,11 @@ export default function HeroSection() {
                       backgroundColor: "#004C97",
                       color: "#FFFFFF",
                       borderRadius: 2,
-                      boxShadow: "0 4px 14px rgba(0, 76, 151, 0.3)",
+                      boxShadow: shadows.hero,
                       "&:hover": {
                         backgroundColor: "#003d7a",
                         transform: "translateY(-2px)",
-                        boxShadow: "0 8px 25px rgba(0, 76, 151, 0.4)",
+                        boxShadow: shadows.hero,
                       },
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
@@ -240,7 +240,7 @@ export default function HeroSection() {
                       maxWidth: 480,
                       height: "100%",
                       background:
-                        "linear-gradient(135deg, rgba(0, 176, 240, 0.1) 0%, rgba(0, 76, 151, 0.05) 100%)",
+                        brandGradients.card,
                       borderRadius: 4,
                       backdropFilter: "blur(20px)",
                       border: "1px solid rgba(0, 176, 240, 0.2)",
@@ -286,7 +286,7 @@ export default function HeroSection() {
                           justifyContent: "center",
                           mb: 3,
                           mx: "auto",
-                          boxShadow: "0 8px 32px rgba(0, 76, 151, 0.3)",
+                          boxShadow: shadows.hero,
                         }}
                       >
                         <Typography
