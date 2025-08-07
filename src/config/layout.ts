@@ -1,7 +1,7 @@
 export const HEADER = {
-  H_MOBILE: 82,
-  H_DESKTOP: 92,
-  H_DESKTOP_OFFSET: 92 - 10,
+  H_MOBILE: 70,
+  H_DESKTOP: 82,
+  H_DESKTOP_OFFSET: 75,
 };
 
 export const NAV = {

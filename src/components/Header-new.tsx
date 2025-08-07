@@ -18,7 +18,7 @@ import { useResponsive } from '@/hooks/use-responsive';
 import Logo from '@/components/logo';
 import NavDesktop from '@/components/nav/NavDesktop';
 import NavMobile from '@/components/nav/NavMobile';
-import { LoginButton, SettingsButton } from '@/components/common';
+import { HeaderShadow, LoginButton, SettingsButton } from '@/components/common';
 // config
 import { HEADER } from '@/config/layout';
 import { navConfig } from '@/config/navigation';
@@ -31,26 +31,13 @@ export default function Header() {
   return (
     <AppBar
       position="fixed"
-      elevation={0}
       sx={{
-        backgroundColor: offsetTop 
-          ? 'rgba(255, 255, 255, 0.95)' 
-          : 'rgba(255, 255, 255, 0.8)',
-        backdropFilter: offsetTop ? 'blur(20px)' : 'blur(10px)',
-        borderBottom: offsetTop ? '1px solid rgba(0, 0, 0, 0.08)' : 'none',
-        boxShadow: offsetTop 
-          ? '0px 2px 8px -2px rgba(0, 0, 0, 0.12)' 
-          : 'none',
+        backgroundColor: offsetTop ? 'rgba(255, 255, 255, 0.9)' : 'background.paper',
+        backdropFilter: offsetTop ? 'blur(20px)' : 'none',
+        borderBottom: '1px solid',
+        borderColor: 'divider',
+        boxShadow: offsetTop ? theme.shadows[8] : 'none',
         color: 'text.primary',
-        transition: theme.transitions.create([
-          'background-color', 
-          'backdrop-filter', 
-          'border-bottom', 
-          'box-shadow'
-        ], {
-          duration: theme.transitions.duration.standard,
-          easing: theme.transitions.easing.easeInOut,
-        }),
       }}
     >
       <Toolbar
@@ -58,11 +45,11 @@ export default function Header() {
         sx={{
           height: {
             xs: HEADER.H_MOBILE,
-            md: offsetTop ? HEADER.H_DESKTOP_OFFSET : HEADER.H_DESKTOP,
+            md: HEADER.H_DESKTOP,
           },
           transition: theme.transitions.create(['height'], {
             easing: theme.transitions.easing.easeInOut,
-            duration: theme.transitions.duration.standard,
+            duration: theme.transitions.duration.shorter,
           }),
         }}
       >
@@ -84,15 +71,8 @@ export default function Header() {
                 py: 1,
                 fontWeight: 600,
                 boxShadow: theme.shadows[4],
-                transition: theme.transitions.create([
-                  'transform', 
-                  'box-shadow'
-                ], {
-                  duration: theme.transitions.duration.short,
-                }),
                 '&:hover': {
                   boxShadow: theme.shadows[8],
-                  transform: 'translateY(-1px)',
                 },
               }}
             >
@@ -107,6 +87,8 @@ export default function Header() {
           </Stack>
         </Container>
       </Toolbar>
+
+      {offsetTop && <HeaderShadow />}
     </AppBar>
   );
 }

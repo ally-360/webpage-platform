@@ -4,10 +4,6 @@ export const navConfig = [
     path: '/',
   },
   {
-    title: 'Producto',
-    path: '/#que-es-ally360',
-  },
-  {
     title: 'Planes',
     path: '/planes',
   },

@@ -1,22 +1,17 @@
 import { Metadata } from 'next';
-import { Box, Container, Typography } from '@mui/material';
+import ServiciosPage from './ServiciosPage';
 
 export const metadata: Metadata = {
-  title: 'Servicios - Ally360',
-  description: 'Descubre todos los servicios que ofrecemos: implementación, capacitación, soporte técnico y más.',
+  title: 'Servicios Ally360 - ERP Colombia | Gestión Empresarial Completa',
+  description: 'Descubre todos los servicios de Ally360: facturación electrónica DIAN, inventario, ventas, compras, reportes y más. ERP completo para PYMEs colombianas.',
+  keywords: 'servicios ally360, erp colombia, facturación electrónica dian, inventario, ventas, pos, reportes empresariales',
+  openGraph: {
+    title: 'Servicios Ally360 - ERP Colombia',
+    description: 'Todos los servicios que tu empresa necesita en una sola plataforma. Facturación DIAN, inventario, ventas y más.',
+    type: 'website',
+  },
 };
 
-export default function ServiciosPage() {
-  return (
-    <Container maxWidth="lg">
-      <Box sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h1" gutterBottom>
-          Servicios
-        </Typography>
-        <Typography variant="h6" color="text.secondary">
-          Página en construcción - Próximamente información detallada de servicios
-        </Typography>
-      </Box>
-    </Container>
-  );
+export default function Page() {
+  return <ServiciosPage />;
 }

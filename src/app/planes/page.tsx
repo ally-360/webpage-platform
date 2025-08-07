@@ -1,22 +1,17 @@
 import { Metadata } from 'next';
-import { Box, Container, Typography } from '@mui/material';
+import PlanesPage from './PlanesPage';
 
 export const metadata: Metadata = {
-  title: 'Planes y Precios - Ally360',
-  description: 'Conoce todos nuestros planes y elige el que mejor se adapte a tu negocio. Prueba gratuita incluida.',
+  title: 'Planes y Precios | Ally360 - ERP en la Nube para PYMEs',
+  description: 'Descubre los planes de Ally360 diseñados para cada etapa de tu negocio. Desde emprendedores hasta empresas medianas. Facturación electrónica DIAN incluida.',
+  keywords: 'planes ally360, precios erp colombia, software pymes, facturación electrónica, planes empresariales',
+  openGraph: {
+    title: 'Planes y Precios | Ally360',
+    description: 'Planes diseñados para cada etapa de tu negocio. Facturación electrónica DIAN y soporte incluido.',
+    type: 'website',
+  },
 };
 
-export default function PlanesPage() {
-  return (
-    <Container maxWidth="lg">
-      <Box sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h1" gutterBottom>
-          Planes y Precios
-        </Typography>
-        <Typography variant="h6" color="text.secondary">
-          Página en construcción - Próximamente contenido detallado de planes
-        </Typography>
-      </Box>
-    </Container>
-  );
+export default function Page() {
+  return <PlanesPage />;
 }

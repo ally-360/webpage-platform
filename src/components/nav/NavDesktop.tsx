@@ -54,7 +54,7 @@ export default function NavDesktop({ data }: NavDesktopProps) {
               '&::after': {
                 content: '""',
                 position: 'absolute',
-                bottom: -4,
+                bottom: 15,
                 left: '50%',
                 transform: 'translateX(-50%)',
                 width: '60%',
