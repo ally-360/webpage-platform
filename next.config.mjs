@@ -1,7 +1,9 @@
-import path from "path";
-import type { NextConfig } from "next";
+// next.config.mjs
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -11,7 +13,7 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src'),
     };
     return config;
   },
