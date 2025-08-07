@@ -1,0 +1,111 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cashflow-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00c853;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#1b5e20;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="money-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50"/>
+      <stop offset="100%" style="stop-color:#2e7d32"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#cashflow-bg)"/>
+  <rect x="50" y="50" width="700" height="500" fill="white" rx="8" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Cash flow arrow (upward trend) -->
+  <path d="M100 400 Q200 350 300 320 Q400 300 500 280 Q600 260 700 240" 
+        stroke="#4caf50" stroke-width="6" fill="none"/>
+  <polygon points="690,230 710,240 690,250" fill="#4caf50"/>
+  
+  <!-- Money symbols -->
+  <circle cx="150" cy="380" r="20" fill="url(#money-gradient)"/>
+  <text x="150" y="387" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">$</text>
+  
+  <circle cx="250" cy="340" r="22" fill="url(#money-gradient)"/>
+  <text x="250" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">$</text>
+  
+  <circle cx="350" cy="310" r="24" fill="url(#money-gradient)"/>
+  <text x="350" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="white" font-weight="bold">$</text>
+  
+  <circle cx="450" cy="280" r="26" fill="url(#money-gradient)"/>
+  <text x="450" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="white" font-weight="bold">$</text>
+  
+  <!-- Calendar/timeline -->
+  <rect x="100" y="480" width="600" height="40" fill="#f5f5f5" stroke="#d4d4d4" rx="4"/>
+  
+  <!-- Month markers -->
+  <rect x="120" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="130" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">Ene</text>
+  
+  <rect x="220" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="230" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">Feb</text>
+  
+  <rect x="320" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="330" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">Mar</text>
+  
+  <rect x="420" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="430" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">Abr</text>
+  
+  <rect x="520" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="530" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">May</text>
+  
+  <rect x="620" y="485" width="2" height="30" fill="#4caf50"/>
+  <text x="630" y="505" font-family="Arial, sans-serif" font-size="12" fill="#666">Jun</text>
+  
+  <!-- Dashboard/metrics panel -->
+  <rect x="500" y="120" width="180" height="120" fill="#fafafa" stroke="#e0e0e0" rx="4"/>
+  
+  <!-- KPI boxes -->
+  <rect x="520" y="140" width="60" height="30" fill="#4caf50" rx="4"/>
+  <text x="550" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">DSO</text>
+  <text x="550" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">35 días</text>
+  
+  <rect x="600" y="140" width="60" height="30" fill="#2196f3" rx="4"/>
+  <text x="630" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">ROT</text>
+  <text x="630" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">8x año</text>
+  
+  <rect x="520" y="185" width="60" height="30" fill="#ff9800" rx="4"/>
+  <text x="550" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">LIQ</text>
+  <text x="550" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">2.5:1</text>
+  
+  <rect x="600" y="185" width="60" height="30" fill="#9c27b0" rx="4"/>
+  <text x="630" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">CF</text>
+  <text x="630" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">+15M</text>
+  
+  <!-- Invoice/payment process -->
+  <rect x="100" y="120" width="50" height="60" fill="#2196f3" rx="4"/>
+  <text x="125" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Venta</text>
+  <text x="125" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white">📄</text>
+  
+  <!-- Arrow 1 -->
+  <polygon points="160,150 180,150 175,145 180,150 175,155" fill="#666"/>
+  <text x="170" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#666">30 días</text>
+  
+  <rect x="190" y="120" width="50" height="60" fill="#ff9800" rx="4"/>
+  <text x="215" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Factura</text>
+  <text x="215" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white">📋</text>
+  
+  <!-- Arrow 2 -->
+  <polygon points="250,150 270,150 265,145 270,150 265,155" fill="#666"/>
+  <text x="260" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#666">15 días</text>
+  
+  <rect x="280" y="120" width="50" height="60" fill="#4caf50" rx="4"/>
+  <text x="305" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Cobro</text>
+  <text x="305" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white">💰</text>
+  
+  <!-- Optimization arrows -->
+  <path d="M125 190 Q125 210 215 210 Q215 190 215 190" stroke="#4caf50" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="170" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4caf50" font-weight="bold">Optimización</text>
+  
+  <path d="M215 190 Q215 210 305 210 Q305 190 305 190" stroke="#4caf50" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  
+  <!-- Main title -->
+  <text x="400" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#2e7d32" font-weight="bold">Flujo de Caja</text>
+  <text x="400" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">Optimización 2025</text>
+  
+  <!-- Growth indicator -->
+  <circle cx="700" cy="100" r="25" fill="#4caf50"/>
+  <text x="700" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">+40%</text>
+  <text x="700" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">📈</text>
+  <text x="700" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">Crecimiento</text>
+</svg>

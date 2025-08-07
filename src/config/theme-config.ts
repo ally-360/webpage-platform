@@ -94,6 +94,7 @@ export const brandGradients = {
   primaryLight: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
   primaryDark: 'linear-gradient(135deg, #004C97 0%, #1565c0 100%)',
   secondary: 'linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #4caf50 100%)',
+  accent: 'linear-gradient(135deg, #0066CC 0%, #42a5f5 100%)',
   success: 'linear-gradient(135deg, #2e7d32 0%, #4caf50 100%)',
   hero: 'linear-gradient(135deg, #004C97 0%, #1976d2 70%, #42a5f5 100%)',
   cta: 'linear-gradient(135deg, #004C97 0%, #0066CC 100%)',

@@ -1,0 +1,79 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="comparison-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9c27b0;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#673ab7;stop-opacity:0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#comparison-bg)"/>
+  <rect x="50" y="50" width="700" height="500" fill="white" rx="8" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- VS indicator -->
+  <circle cx="400" cy="200" r="40" fill="#9c27b0"/>
+  <text x="400" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" font-weight="bold">VS</text>
+  
+  <!-- Left side - Ally360 -->
+  <rect x="80" y="120" width="160" height="160" fill="#1976d2" rx="8"/>
+  <text x="160" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">Ally360</text>
+  
+  <!-- Ally360 features -->
+  <circle cx="120" cy="180" r="6" fill="#4caf50"/>
+  <text x="135" y="185" font-family="Arial, sans-serif" font-size="10" fill="white">Fácil de usar</text>
+  
+  <circle cx="120" cy="200" r="6" fill="#4caf50"/>
+  <text x="135" y="205" font-family="Arial, sans-serif" font-size="10" fill="white">Soporte 24/7</text>
+  
+  <circle cx="120" cy="220" r="6" fill="#4caf50"/>
+  <text x="135" y="225" font-family="Arial, sans-serif" font-size="10" fill="white">Precio justo</text>
+  
+  <circle cx="120" cy="240" r="6" fill="#4caf50"/>
+  <text x="135" y="245" font-family="Arial, sans-serif" font-size="10" fill="white">DIAN integrado</text>
+  
+  <!-- Right side - Competition -->
+  <rect x="560" y="120" width="160" height="160" fill="#757575" rx="8"/>
+  <text x="640" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">Otros ERP</text>
+  
+  <!-- Competition features -->
+  <circle cx="580" cy="180" r="6" fill="#ff9800"/>
+  <text x="595" y="185" font-family="Arial, sans-serif" font-size="10" fill="white">Complejo</text>
+  
+  <circle cx="580" cy="200" r="6" fill="#f44336"/>
+  <text x="595" y="205" font-family="Arial, sans-serif" font-size="10" fill="white">Soporte limitado</text>
+  
+  <circle cx="580" cy="220" r="6" fill="#f44336"/>
+  <text x="595" y="225" font-family="Arial, sans-serif" font-size="10" fill="white">Costoso</text>
+  
+  <circle cx="580" cy="240" r="6" fill="#ff9800"/>
+  <text x="595" y="245" font-family="Arial, sans-serif" font-size="10" fill="white">Config manual</text>
+  
+  <!-- Comparison chart -->
+  <rect x="250" y="320" width="300" height="120" fill="#fafafa" stroke="#e0e0e0" rx="4"/>
+  
+  <!-- Performance bars -->
+  <text x="270" y="340" font-family="Arial, sans-serif" font-size="12" fill="#333">Facilidad:</text>
+  <rect x="340" y="330" width="80" height="15" fill="#4caf50" rx="2"/>
+  <rect x="440" y="330" width="40" height="15" fill="#ff9800" rx="2"/>
+  
+  <text x="270" y="360" font-family="Arial, sans-serif" font-size="12" fill="#333">Precio:</text>
+  <rect x="340" y="350" width="90" height="15" fill="#4caf50" rx="2"/>
+  <rect x="440" y="350" width="30" height="15" fill="#f44336" rx="2"/>
+  
+  <text x="270" y="380" font-family="Arial, sans-serif" font-size="12" fill="#333">Soporte:</text>
+  <rect x="340" y="370" width="85" height="15" fill="#4caf50" rx="2"/>
+  <rect x="440" y="370" width="45" height="15" fill="#ff9800" rx="2"/>
+  
+  <text x="270" y="400" font-family="Arial, sans-serif" font-size="12" fill="#333">DIAN:</text>
+  <rect x="340" y="390" width="95" height="15" fill="#4caf50" rx="2"/>
+  <rect x="440" y="390" width="25" height="15" fill="#f44336" rx="2"/>
+  
+  <!-- Legend -->
+  <rect x="270" y="415" width="12" height="12" fill="#4caf50" rx="2"/>
+  <text x="290" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">Ally360</text>
+  
+  <rect x="350" y="415" width="12" height="12" fill="#ff9800" rx="2"/>
+  <text x="370" y="425" font-family="Arial, sans-serif" font-size="10" fill="#333">Competencia</text>
+  
+  <!-- Main title -->
+  <text x="400" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#9c27b0" font-weight="bold">ERP Comparison</text>
+  <text x="400" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">¿Cuál es mejor para tu PYME?</text>
+</svg>
