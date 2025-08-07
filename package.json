@@ -25,6 +25,7 @@
     "@mui/material": "^7.3.1",
     "@mui/system": "^7.3.1",
     "@next/mdx": "^15.4.6",
+    "@tailwindcss/postcss": "^4",
     "@types/mdx": "^2.0.13",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
@@ -38,8 +39,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "sharp": "^0.34.3",
-    "yup": "^1.7.0",
-    "@tailwindcss/postcss": "^4"
+    "yup": "^1.7.0"
   },
   "engines": {
     "node": "20.x"
@@ -47,12 +47,12 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@netlify/plugin-nextjs": "^5.12.0",
-    "@types/node": "^20",
+    "@types/node": "^20.19.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.9.2"
   }
 }
