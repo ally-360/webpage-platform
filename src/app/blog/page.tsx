@@ -1,4 +1,5 @@
 import { BlogIndexPage } from './BlogIndexPage'
+import { getAllBlogPosts } from '@/lib/blog'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -22,5 +23,8 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  return <BlogIndexPage />
+  // ✅ Esto se ejecuta en el servidor
+  const posts = getAllBlogPosts()
+  
+  return <BlogIndexPage posts={posts} />
 }

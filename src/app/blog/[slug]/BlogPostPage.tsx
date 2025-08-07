@@ -19,6 +19,9 @@ import { brandGradients } from '@/config/theme-config'
 import type { BlogPost } from '@/types/blog'
 import { TagBadge } from '@/components/blog/TagBadge'
 import { BlogCTA } from '@/components/blog/BlogCTA'
+import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 interface Props {
   post: BlogPost & { content: string }
@@ -99,22 +102,96 @@ const mdxComponents = {
   ),
   table: (props: React.ComponentProps<'table'>) => (
     <Box
-      component="table"
       sx={{
         width: '100%',
-        mb: 3,
-        borderCollapse: 'collapse',
-        '& th, & td': {
-          border: '1px solid',
-          borderColor: 'grey.300',
-          px: 2,
-          py: 1,
-          textAlign: 'left',
-        },
-        '& th': {
-          bgcolor: 'grey.100',
-          fontWeight: 600,
-        },
+        mb: 4,
+        overflow: 'auto',
+        border: '1px solid',
+        borderColor: 'grey.300',
+        borderRadius: 1,
+        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+      }}
+    >
+      <Box
+        component="table"
+        sx={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          fontSize: '0.875rem',
+          '& th': {
+            bgcolor: 'primary.main',
+            color: 'white',
+            fontWeight: 600,
+            px: 2,
+            py: 1.5,
+            textAlign: 'left',
+            borderRight: '1px solid rgba(255,255,255,0.2)',
+            '&:last-child': {
+              borderRight: 'none',
+            },
+          },
+          '& td': {
+            px: 2,
+            py: 1.5,
+            borderRight: '1px solid',
+            borderBottom: '1px solid',
+            borderColor: 'grey.200',
+            verticalAlign: 'middle',
+            '&:last-child': {
+              borderRight: 'none',
+            },
+          },
+          '& tr:last-child td': {
+            borderBottom: 'none',
+          },
+          '& tr:nth-of-type(even) td': {
+            bgcolor: 'grey.50',
+          },
+          // Estilo para emojis/símbolos en las celdas
+          '& td, & th': {
+            '& span': {
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.5,
+            },
+          },
+        }}
+        {...props}
+      />
+    </Box>
+  ),
+  thead: (props: React.ComponentProps<'thead'>) => (
+    <Box component="thead" {...props} />
+  ),
+  tbody: (props: React.ComponentProps<'tbody'>) => (
+    <Box component="tbody" {...props} />
+  ),
+  tr: (props: React.ComponentProps<'tr'>) => (
+    <Box component="tr" {...props} />
+  ),
+  th: (props: React.ComponentProps<'th'>) => (
+    <Box component="th" {...props} />
+  ),
+  td: (props: React.ComponentProps<'td'>) => (
+    <Box component="td" {...props} />
+  ),
+  // Componente especial para celdas con íconos/estados
+  strong: (props: React.ComponentProps<'strong'>) => (
+    <Box
+      component="strong"
+      sx={{
+        fontWeight: 600,
+        color: 'primary.main',
+      }}
+      {...props}
+    />
+  ),
+  em: (props: React.ComponentProps<'em'>) => (
+    <Box
+      component="em"
+      sx={{
+        fontStyle: 'italic',
+        color: 'text.secondary',
       }}
       {...props}
     />
@@ -261,6 +338,12 @@ export function BlogPostPage({ post }: Props) {
             <MDXRemote 
               source={post.content} 
               components={mdxComponents}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+                }
+              }}
             />
           </Box>
         </motion.div>

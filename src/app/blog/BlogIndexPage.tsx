@@ -14,11 +14,13 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { brandGradients } from '@/config/theme-config'
-import { getBlogPosts } from '@/lib/blog'
 import type { BlogPost } from '@/types/blog'
 
-export function BlogIndexPage() {
-  const posts = getBlogPosts()
+interface BlogIndexPageProps {
+  posts: BlogPost[]
+}
+
+export function BlogIndexPage({ posts }: BlogIndexPageProps) {
   const featuredPosts = posts.filter((post: BlogPost) => post.featured)
   const regularPosts = posts.filter((post: BlogPost) => !post.featured)
 

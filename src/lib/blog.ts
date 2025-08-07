@@ -5,7 +5,8 @@ import type { BlogPost } from '@/types/blog'
 
 const BLOG_PATH = path.join(process.cwd(), 'content/blog')
 
-export function getBlogPosts(): BlogPost[] {
+// ✅ Esta función solo se ejecuta en el servidor
+export function getAllBlogPosts(): BlogPost[] {
   try {
     // Check if blog directory exists
     if (!fs.existsSync(BLOG_PATH)) {
@@ -22,15 +23,23 @@ export function getBlogPosts(): BlogPost[] {
       const { data: frontMatter } = matter(fileContent)
       
       return {
-        ...frontMatter,
         slug: frontMatter.slug || filename.replace('.mdx', ''),
+        title: frontMatter.title,
+        description: frontMatter.description,
+        date: frontMatter.publishedAt || frontMatter.date,
+        tags: frontMatter.tags || [],
+        image: frontMatter.image,
+        category: frontMatter.category,
+        author: frontMatter.author,
+        featured: frontMatter.featured || false,
+        readTime: frontMatter.readTime,
       } as BlogPost
     })
 
     // Sort posts by date (newest first)
     return posts.sort((a, b) => {
-      const dateA = new Date(a.publishedAt || a.date)
-      const dateB = new Date(b.publishedAt || b.date)
+      const dateA = new Date(a.date)
+      const dateB = new Date(b.date)
       return dateB.getTime() - dateA.getTime()
     })
   } catch (error) {
@@ -38,6 +47,9 @@ export function getBlogPosts(): BlogPost[] {
     return []
   }
 }
+
+// Alias para compatibilidad con código existente
+export const getBlogPosts = getAllBlogPosts
 
 export function getBlogPost(slug: string): (BlogPost & { content: string }) | null {
   try {
