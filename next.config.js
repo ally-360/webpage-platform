@@ -13,8 +13,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material'],
   },
-  // Disable any legacy page generation that might interfere
-  output: 'export',
 }
 
 module.exports = nextConfig

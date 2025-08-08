@@ -19,17 +19,17 @@ export function getExternalUrls(): ExternalUrls {
   const registerUrl = process.env.NEXT_PUBLIC_REGISTER_URL;
 
   if (!dashboardUrl || !loginUrl || !registerUrl) {
-    console.error('Missing external URLs configuration:', {
+    console.warn('Missing external URLs configuration:', {
       dashboard: !!dashboardUrl,
       login: !!loginUrl,
       register: !!registerUrl,
     });
     
-    // Fallback URLs for development
+    // Fallback URLs for development/build
     return {
-      dashboard: dashboardUrl || 'http://localhost:3000',
-      login: loginUrl || 'http://localhost:3000/login',
-      register: registerUrl || 'http://localhost:3000/register',
+      dashboard: dashboardUrl || 'https://app.ally360.co',
+      login: loginUrl || 'https://auth.ally360.co/login',
+      register: registerUrl || 'https://auth.ally360.co/register',
     };
   }
 
