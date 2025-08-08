@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import path from 'path';
+
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
