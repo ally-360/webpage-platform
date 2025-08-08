@@ -1,27 +1,11 @@
 [build]
-  # Comando de build
   command = "npm run build"
-  
-  # Node.js version
-  node_bundler = "esbuild"
+  publish = ".next"
 
 [build.environment]
-  # Node.js version para el build
   NODE_VERSION = "20"
-  
-  # Optimizaciones para Next.js
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Plugin de Next.js para Netlify
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-# Redirecciones para API routes
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/nextjs/:splat"
-  status = 200
-  
 # Redirecciones para formularios de contacto
 [[redirects]]
   from = "/contact"
