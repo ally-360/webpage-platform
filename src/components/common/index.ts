@@ -1,7 +1,7 @@
 // Common components - reusable across the site
 export { default as CTASection } from './CTASection';
-export { LoginButton } from './LoginButton';
-export { RegisterButton } from './RegisterButton';
-export { DashboardButton } from './DashboardButton';
-export { SettingsButton } from './SettingsButton';
-export { FreeTrialButton } from './FreeTrialButton';
+export { default as LoginButton } from './LoginButton';
+export { default as RegisterButton } from './RegisterButton';
+export { default as DashboardButton } from './DashboardButton';
+export { default as SettingsButton } from './SettingsButton';
+export { default as FreeTrialButton } from './FreeTrialButton';

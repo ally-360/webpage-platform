@@ -13,7 +13,8 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@mui/material', '@mui/icons-material'],
   },
-  output: 'standalone', // For better Netlify compatibility
+  // Disable any legacy page generation that might interfere
+  output: 'export',
 }
 
 module.exports = nextConfig

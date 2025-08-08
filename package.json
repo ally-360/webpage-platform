@@ -10,7 +10,7 @@
     "clean": "rm -rf .next out",
     "build:analyze": "ANALYZE=true npm run build",
     "build:prod": "NODE_ENV=production npm run build",
-    "export": "next export",
+    "export": "next build",
     "postbuild": "echo 'Build completed successfully!'"
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "@mui/material": "^7.3.1",
     "@mui/system": "^7.3.1",
     "@next/mdx": "^15.4.6",
-    "@tailwindcss/postcss": "^4",
     "@types/mdx": "^2.0.13",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
@@ -46,12 +45,15 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@netlify/plugin-nextjs": "^5.12.0",
-    "@types/node": "^20.19.9",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4",
-    "typescript": "^5.9.2"
+    "typescript": "^5"
   }
 }

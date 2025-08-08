@@ -17,6 +17,7 @@ export default function NavDesktop({ data }: NavDesktopProps) {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
+    if (!pathname) return false;
     if (path === '/') {
       return pathname === '/';
     }

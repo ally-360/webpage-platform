@@ -30,7 +30,7 @@ export function LoginButton({
         fontWeight: 600,
         color: variant === 'text' ? 'text.primary' : undefined,
         '&:hover': {
-          backgroundColor: variant === 'text' ? 'rgba(0, 0, 0, 0.04)' : undefined,
+          boxShadow: 'none'
         },
         ...props.sx,
       }}

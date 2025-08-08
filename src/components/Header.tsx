@@ -18,7 +18,7 @@ import { useExternalRedirect } from '@/hooks/use-external-redirect';
 import Logo from '@/components/logo';
 import NavDesktop from '@/components/nav/NavDesktop';
 import NavMobile from '@/components/nav/NavMobile';
-import { LoginButton, SettingsButton } from '@/components/common';
+import { LoginButton } from '@/components/common';
 // config
 import { HEADER } from '@/config/layout';
 import { navConfig } from '@/config/navigation';
@@ -100,8 +100,6 @@ export default function Header() {
             </Button>
 
             {mdUp && <LoginButton />}
-
-            <SettingsButton />
 
             {!mdUp && <NavMobile offsetTop={offsetTop} data={navConfig} />}
           </Stack>

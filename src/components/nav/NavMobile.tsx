@@ -30,6 +30,7 @@ export default function NavMobile({ data }: NavMobileProps) {
   const handleClose = () => setOpen(false);
 
   const isActive = (path: string) => {
+    if (!pathname) return false;
     if (path === '/') {
       return pathname === '/';
     }
