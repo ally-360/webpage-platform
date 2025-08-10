@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { memo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Box, Link as MuiLink } from '@mui/material';
 
 interface LogoProps {
@@ -9,14 +10,28 @@ interface LogoProps {
   sx?: object;
 }
 
-const Logo = ({ disabledLink = false, sx }: LogoProps) => {
+const Logo = memo(({ disabledLink = false, sx }: LogoProps) => {
   const logo = (
     <Box
-      component="img"
-      src="/logo/logoFondoTransparentesvg.svg"
-      alt="Ally360 Logo"
-      sx={{ width: 190, height: 52, cursor: 'pointer', ...sx }}
-    />
+      sx={{ 
+        width: 190, 
+        height: 52, 
+        cursor: 'pointer',
+        position: 'relative',
+        ...sx 
+      }}
+    >
+      <Image
+        src="/logo/logoFondoTransparentesvg.svg"
+        alt="Ally360 Logo"
+        fill
+        sizes="190px"
+        priority={true}
+        style={{
+          objectFit: 'contain',
+        }}
+      />
+    </Box>
   );
 
   if (disabledLink) {
@@ -24,10 +39,23 @@ const Logo = ({ disabledLink = false, sx }: LogoProps) => {
   }
 
   return (
-    <MuiLink component={Link} href="/" sx={{ display: 'contents' }}>
+    <MuiLink 
+      component={Link} 
+      href="/" 
+      sx={{ 
+        display: 'contents',
+        '&:hover': {
+          opacity: 0.8,
+          transition: 'opacity 0.2s ease'
+        }
+      }}
+      prefetch={false}
+    >
       {logo}
     </MuiLink>
   );
-};
+});
+
+Logo.displayName = 'Logo';
 
 export default Logo;

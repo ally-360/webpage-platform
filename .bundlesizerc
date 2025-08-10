@@ -1,0 +1,17 @@
+[
+  {
+    "path": ".next/static/chunks/vendors-*.js",
+    "maxSize": "250 kB",
+    "compression": "gzip"
+  },
+  {
+    "path": ".next/static/chunks/app/layout-*.js", 
+    "maxSize": "30 kB",
+    "compression": "gzip"
+  },
+  {
+    "path": ".next/static/chunks/app/page-*.js",
+    "maxSize": "20 kB", 
+    "compression": "gzip"
+  }
+]

@@ -1,8 +1,9 @@
+import { Suspense } from 'react';
 import { HeroSection } from '@/components/sections';
 import { Box, Skeleton } from '@mui/material';
 import dynamic from 'next/dynamic';
 
-// Dynamic imports manteniendo SSR para mejor SEO
+// Dynamic imports manteniendo SSR para SEO
 const WhatIsAlly360Section = dynamic(() => import('@/components/sections/WhatIsAlly360Section'), {
   loading: () => <SectionSkeleton />
 });

@@ -3,14 +3,15 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/theme";
 import { Header, Footer } from "@/components";
-import { Box } from "@mui/material";
-import { HEADER } from "@/config/layout";
 
 const inter = Inter({
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
   subsets: ["latin"],
   display: 'swap',
   variable: "--font-inter",
+  preload: true,
+  fallback: ['system-ui', 'arial', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -65,12 +66,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="antialiased">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload critical resources */}
+        <link rel="preload" href="/logo/logoFondoTransparentesvg.svg" as="image" type="image/svg+xml" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <meta name="theme-color" content="#00B0F0" />
+        <meta name="msapplication-TileColor" content="#00B0F0" />
+      </head>
+      <body className={`antialiased ${inter.className}`}>
         <ThemeProvider>
           <Header />
-          <Box component="main" sx={{ pt: { xs: `${HEADER.H_MOBILE}px`, md: `${HEADER.H_DESKTOP}px` } }}>
+          <main 
+            style={{ 
+              paddingTop: 'var(--header-height, 80px)',
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
             {children}
-          </Box>
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
