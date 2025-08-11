@@ -1,11 +1,16 @@
 // next.config.js
 const path = require('path');
 
-// Bundle analyzer for performance monitoring
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
+let withBundleAnalyzer = (cfg) => cfg;
+if (process.env.ANALYZE === 'true') {
+  try {
+    withBundleAnalyzer = require('@next/bundle-analyzer')({
+      enabled: true,
+    });
+  } catch (e) {
+    console.warn('Bundle analyzer no instalado; omitiendo.', e?.message);
+  }
+}
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
