@@ -1,5 +1,6 @@
 'use client';
 
+import React, { memo, useMemo } from 'react';
 import {
   Box,
   Container,
@@ -67,14 +68,15 @@ const navigationSections = [
   },
 ];
 
-const socialLinks = [
-  { icon: <Facebook />, href: 'https://facebook.com/ally360co', label: 'Facebook' },
-  { icon: <Twitter />, href: 'https://twitter.com/ally360co', label: 'Twitter' },
-  { icon: <LinkedIn />, href: 'https://linkedin.com/company/ally360co', label: 'LinkedIn' },
-  { icon: <Instagram />, href: 'https://instagram.com/ally360co', label: 'Instagram' },
-];
+const Footer = memo(() => {
+  const socialLinks = useMemo(() => [
+    { icon: <Facebook />, href: 'https://facebook.com/ally360co', label: 'Facebook' },
+    { icon: <Twitter />, href: 'https://twitter.com/ally360co', label: 'Twitter' },
+    { icon: <LinkedIn />, href: 'https://linkedin.com/company/ally360co', label: 'LinkedIn' },
+    { icon: <Instagram />, href: 'https://instagram.com/ally360co', label: 'Instagram' },
+  ], []);
 
-export default function Footer() {
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
   return (
     <Box
       component="footer"
@@ -226,7 +228,7 @@ export default function Footer() {
           }}
         >
           <Typography variant="body2" color="grey.400">
-            © {new Date().getFullYear()} Ally360. Todos los derechos reservados.
+            © {currentYear} Ally360. Todos los derechos reservados.
           </Typography>
           
           <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -247,4 +249,8 @@ export default function Footer() {
       </Container>
     </Box>
   );
-}
+});
+
+Footer.displayName = 'Footer';
+
+export default Footer;

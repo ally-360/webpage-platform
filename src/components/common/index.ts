@@ -5,3 +5,5 @@ export { default as RegisterButton } from './RegisterButton';
 export { default as DashboardButton } from './DashboardButton';
 export { default as SettingsButton } from './SettingsButton';
 export { default as FreeTrialButton } from './FreeTrialButton';
+export { default as OptimizedImage } from './OptimizedImage';
+export { default as LazyComponentWrapper } from './LazyComponentWrapper';

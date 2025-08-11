@@ -3,13 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
+  --header-height: 80px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +16,39 @@
   }
 }
 
+/* Performance optimizations */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  /* Enable hardware acceleration */
+  transform: translateZ(0);
+  /* Optimize font rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce DOM size by optimizing common elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Improve scrolling performance */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize images by default */
+img {
+  max-width: 100%;
+  height: auto;
+  /* Enable hardware acceleration */
+  transform: translateZ(0);
+}
+
+/* Reduce paint operations */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
