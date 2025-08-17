@@ -20,9 +20,10 @@ interface NavMobileProps {
     title: string;
     path: string;
   }>;
+  onRequestDemo?: () => void; // Nueva prop para manejar el botón demo
 }
 
-export default function NavMobile({ data }: NavMobileProps) {
+export default function NavMobile({ data, onRequestDemo }: NavMobileProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -39,7 +40,14 @@ export default function NavMobile({ data }: NavMobileProps) {
 
   return (
     <>
-      <IconButton onClick={handleOpen} sx={{ color: 'text.primary' }}>
+      <IconButton 
+        onClick={handleOpen} 
+        sx={{ 
+          color: 'text.primary',
+          p: 1.5, // Más padding para mejor área de toque
+          ml: 1, // Margin left para separar del contenido
+        }}
+      >
         <MenuIcon />
       </IconButton>
 
@@ -85,6 +93,45 @@ export default function NavMobile({ data }: NavMobileProps) {
               </Button>
             </ListItem>
           ))}
+          
+          <Box sx={{ my: 2, borderTop: '1px solid', borderColor: 'divider' }} />
+          
+          <ListItem disablePadding>
+            <Button
+              onClick={() => {
+                onRequestDemo?.();
+                handleClose();
+              }}
+              fullWidth
+              variant="contained"
+              sx={{
+                py: 1.5,
+                px: 2,
+                borderRadius: 2,
+                fontWeight: 600,
+                mb: 1,
+              }}
+            >
+              Solicitar Demo
+            </Button>
+          </ListItem>
+          
+          {/* Botón Iniciar Sesión en móvil */}
+          <ListItem disablePadding>
+            <Button
+              href="#" // TODO: Agregar URL de login
+              fullWidth
+              variant="outlined"
+              sx={{
+                py: 1.5,
+                px: 2,
+                borderRadius: 2,
+                fontWeight: 500,
+              }}
+            >
+              Iniciar Sesión
+            </Button>
+          </ListItem>
         </List>
       </Drawer>
     </>

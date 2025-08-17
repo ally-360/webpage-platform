@@ -26,6 +26,7 @@ import { navConfig } from '@/config/navigation';
 export default function Header() {
   const theme = useTheme();
   const mdUp = useResponsive('up', 'md');
+  const smUp = useResponsive('up', 'sm');
   const offsetTop = useOffSetTop();
   const { requestDemo } = useExternalRedirect();
 
@@ -67,7 +68,14 @@ export default function Header() {
           }),
         }}
       >
-        <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
+        <Container 
+          sx={{ 
+            height: 1, 
+            display: 'flex', 
+            alignItems: 'center',
+            px: { xs: 2, sm: 3 }, // Padding más controlado en responsive
+          }}
+        >
           <Logo />
 
           <Box sx={{ flexGrow: 1 }} />
@@ -75,33 +83,43 @@ export default function Header() {
           {mdUp && <NavDesktop offsetTop={offsetTop} data={navConfig} />}
 
           <Stack alignItems="center" direction={{ xs: 'row', md: 'row-reverse' }}>
-            <Button
-              onClick={() => requestDemo()}
-              variant="contained"
-              sx={{
-                borderRadius: 2,
-                px: 3,
-                py: 1,
-                fontWeight: 600,
-                boxShadow: theme.shadows[4],
-                transition: theme.transitions.create([
-                  'transform', 
-                  'box-shadow'
-                ], {
-                  duration: theme.transitions.duration.short,
-                }),
-                '&:hover': {
-                  boxShadow: theme.shadows[8],
-                  transform: 'translateY(-1px)',
-                },
-              }}
-            >
-              Solicitar Demo
-            </Button>
+            {/* Mostrar botón Solicitar Demo solo en sm y superiores */}
+            {smUp && (
+              <Button
+                onClick={() => requestDemo()}
+                variant="contained"
+                sx={{
+                  borderRadius: 2,
+                  px: { xs: 2, sm: 3 }, // Padding más pequeño en xs
+                  py: 1,
+                  fontWeight: 600,
+                  fontSize: { xs: '0.875rem', sm: '1rem' }, // Texto más pequeño en xs
+                  boxShadow: theme.shadows[4],
+                  transition: theme.transitions.create([
+                    'transform', 
+                    'box-shadow'
+                  ], {
+                    duration: theme.transitions.duration.short,
+                  }),
+                  '&:hover': {
+                    boxShadow: theme.shadows[8],
+                    transform: 'translateY(-1px)',
+                  },
+                }}
+              >
+                Solicitar Demo
+              </Button>
+            )}
 
             {mdUp && <LoginButton />}
 
-            {!mdUp && <NavMobile offsetTop={offsetTop} data={navConfig} />}
+            {!mdUp && (
+              <NavMobile 
+                offsetTop={offsetTop} 
+                data={navConfig}
+                onRequestDemo={requestDemo}
+              />
+            )}
           </Stack>
         </Container>
       </Toolbar>
