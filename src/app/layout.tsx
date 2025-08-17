@@ -71,7 +71,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Preload critical resources */}
-        <link rel="preload" href="/logo/logoFondoTransparentesvg.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/logo/logoFondoTransparentesvg.png" as="image" type="image/png" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <meta name="theme-color" content="#00B0F0" />

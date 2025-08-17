@@ -23,7 +23,7 @@ const Logo = memo(({ disabledLink = false, sx }: LogoProps) => {
       }}
     >
       <Image
-        src="/logo/logoFondoTransparentesvg.svg"
+        src="/logo/logoFondoTransparentesvg.png"
         alt="Ally360 Logo"
         fill
         sizes="(max-width: 600px) 140px, (max-width: 900px) 170px, 190px"
