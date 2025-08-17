@@ -30,7 +30,7 @@ export default function NavDesktop({ data }: NavDesktopProps) {
       direction="row"
       spacing={3}
       sx={{
-        mr: 3,
+        mr: 0,
         height: 1,
       }}
     >
@@ -44,6 +44,11 @@ export default function NavDesktop({ data }: NavDesktopProps) {
             color: isActive(link.path) ? 'primary.main' : 'text.primary',
             fontWeight: isActive(link.path) ? 600 : 500,
             boxShadow: 'none',
+            padding: {
+              md: '12px 15px',
+              lg: '14px 30px',
+            },
+            marginLeft: '0 !important',
             fontSize: '0.95rem',
             position: 'relative',
             '&:hover': {
