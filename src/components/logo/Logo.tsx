@@ -14,11 +14,11 @@ const Logo = memo(({ disabledLink = false, sx }: LogoProps) => {
   const logo = (
     <Box
       sx={{ 
-        width: { xs: 140, sm: 170, md: 190 }, // Responsive width
-        height: { xs: 38, sm: 46, md: 52 }, // Responsive height
+        width: { xs: 140, sm: 170, md: 190 },
+        height: { xs: 38, sm: 46, md: 52 },
         cursor: 'pointer',
         position: 'relative',
-        flexShrink: 0, // Evitar que se comprima
+        flexShrink: 0,
         ...sx 
       }}
     >
@@ -26,6 +26,7 @@ const Logo = memo(({ disabledLink = false, sx }: LogoProps) => {
         src="/logo/logo-ally360-transparente.png"
         alt="Ally360 Logo"
         fill
+        unoptimized
         sizes="(max-width: 600px) 140px, (max-width: 900px) 170px, 190px"
         priority={true}
         style={{
