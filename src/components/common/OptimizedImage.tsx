@@ -56,6 +56,7 @@ const OptimizedImage = memo(({
       <Image
         {...imageProps}
         fill
+        unoptimized
         sizes={sizes}
         alt={alt}
       />
@@ -69,6 +70,7 @@ const OptimizedImage = memo(({
         {...imageProps}
         width={width}
         height={height}
+        unoptimized
         sizes={sizes}
         alt={alt}
       />

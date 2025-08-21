@@ -313,6 +313,7 @@ export function BlogPostPage({ post }: Props) {
               src={post.image}
               alt={post.title}
               fill
+              unoptimized
               style={{ objectFit: 'cover' }}
               sizes="(max-width: 1200px) 100vw, 1200px"
               priority

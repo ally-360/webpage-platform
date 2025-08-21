@@ -197,6 +197,7 @@ function BlogCard({ post, variant = 'regular' }: BlogCardProps) {
           src={post.image || '/assets/images/blog-placeholder.svg'}
           alt={post.title}
           fill
+          unoptimized
           style={{ objectFit: 'cover' }}
           sizes={
             isFeatured
