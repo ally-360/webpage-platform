@@ -21,60 +21,67 @@ import { useExternalRedirect } from '@/hooks/use-external-redirect';
 import {
   Check as CheckIcon,
   Star as StarIcon,
+  SmartToy as BotIcon,
+  AutoAwesome as SparkleIcon,
 } from '@mui/icons-material';
 
 const pricingPlans = [
   {
-    name: 'Básico',
-    price: '89,000',
+    name: 'Ally Kickstart',
+    price: '50,000',
     period: '/mes',
-    description: 'Perfecto para pequeños negocios que están empezando',
+    description: 'Perfecto para microempresas que inician su digitalización',
     popular: false,
+    hasAI: false,
     features: [
-      'Hasta 2 usuarios',
-      'Gestión básica de inventario',
-      'Facturación electrónica',
-      'Reportes básicos',
-      'Soporte por email',
-      'Respaldo diario',
+      'Facturación electrónica ilimitada DIAN',
+      'Hasta 2 usuarios (Admin + Contador)',
+      '1 bodega',
+      'POS básico para ventas simples',
+      'Contabilidad básica integrada',
+      'Soporte vía chat estándar',
     ],
     buttonText: 'Comenzar Gratis',
     buttonVariant: 'outlined' as const,
   },
   {
-    name: 'Profesional',
-    price: '149,000',
+    name: 'Ally Boost',
+    price: '75,000',
     period: '/mes',
-    description: 'La opción más popular para empresas en crecimiento',
+    description: 'La opción más popular - Impulsa ventas con IA integrada',
     popular: true,
+    hasAI: true,
+    aiFeature: 'Chatbot IA Ally360',
     features: [
-      'Hasta 5 usuarios',
-      'Gestión avanzada de inventario',
-      'Facturación electrónica completa',
-      'Reportes avanzados y dashboards',
-      'Gestión de clientes y proveedores',
-      'Soporte telefónico prioritario',
-      'Integración con bancos',
-      'Respaldo en tiempo real',
+      'Todo lo de Kickstart +',
+      'Hasta 600 facturas electrónicas/mes',
+      'Hasta 5 usuarios (todos los roles)',
+      'Hasta 3 bodegas + traslados',
+      'POS avanzado',
+      'Reportes avanzados y analítica',
+      'Envío facturas por WhatsApp',
+      'Soporte prioritario',
     ],
     buttonText: 'Prueba Gratuita 30 días',
     buttonVariant: 'contained' as const,
   },
   {
-    name: 'Empresarial',
-    price: '249,000',
+    name: 'Ally Supreme',
+    price: '116,000',
     period: '/mes',
-    description: 'Para empresas que necesitan funcionalidades avanzadas',
+    description: 'Para empresas que necesitan funcionalidades completas',
     popular: false,
+    hasAI: true,
+    aiFeature: 'Chatbot IA Ally360 Premium',
     features: [
-      'Usuarios ilimitados',
-      'Múltiples sucursales',
-      'Inventario multi-bodega',
-      'Reportes personalizados',
-      'API y integraciones',
-      'Soporte técnico dedicado',
-      'Capacitación personalizada',
-      'Respaldo y seguridad enterprise',
+      'Todo lo de Boost +',
+      'Facturación electrónica ilimitada',
+      'Hasta 10 usuarios (todos los roles)',
+      'Hasta 10 bodegas + traslados',
+      'POS completo',
+      'Integraciones y API abierta',
+      'Envío masivo por WhatsApp',
+      'Soporte personalizado + onboarding',
     ],
     buttonText: 'Contactar Ventas',
     buttonVariant: 'outlined' as const,
@@ -204,16 +211,19 @@ export default function PricingSection() {
                 mb: 2,
               }}
             >
-              Elige el plan perfecto para tu empresa. Todos incluyen prueba gratuita y soporte técnico.
+              Elige el plan perfecto para tu empresa. Boost y Supreme incluyen Chatbot IA. Todos con prueba gratuita y soporte técnico.
             </Typography>
             <Chip
-              label="🎉 Primer mes GRATIS para nuevos clientes"
-              color="success"
+              icon={<BotIcon />}
+              label="🎉 Planes con IA disponibles - Primer mes GRATIS"
+              color="primary"
               sx={{
                 fontWeight: 600,
                 fontSize: '0.875rem',
                 px: 2,
                 py: 1,
+                background: 'linear-gradient(135deg, #00B0F0 0%, #004C97 100%)',
+                color: 'white',
               }}
             />
           </Box>
@@ -244,6 +254,7 @@ export default function PricingSection() {
                   transition: 'all 0.3s ease-in-out',
                   position: 'relative',
                   transform: plan.popular ? 'scale(1.05)' : 'scale(1)',
+                  overflow: 'visible',
                   '&:hover': {
                     borderColor: 'primary.main',
                     boxShadow: shadows.pricing,
@@ -263,6 +274,35 @@ export default function PricingSection() {
                       transform: 'translateX(-50%)',
                       fontWeight: 600,
                       zIndex: 1,
+                    }}
+                  />
+                )}
+
+                {/* AI Badge para planes que incluyen IA */}
+                {plan.hasAI && (
+                  <Chip
+                    icon={<BotIcon />}
+                    label="IA"
+                    sx={{
+                      position: 'absolute',
+                      top: plan.popular ? 20 : -8,
+                      right: -8,
+                      zIndex: 2,
+                      background: 'linear-gradient(135deg, #00B0F0 0%, #004C97 100%)',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.75rem',
+                      boxShadow: '0 4px 12px rgba(0, 176, 240, 0.4)',
+                      animation: 'pulse 2s infinite',
+                      '@keyframes pulse': {
+                        '0%, 100%': { 
+                          boxShadow: '0 4px 12px rgba(0, 176, 240, 0.4)',
+                        },
+                        '50%': { 
+                          boxShadow: '0 8px 20px rgba(0, 176, 240, 0.6)',
+                          transform: 'scale(1.05)',
+                        },
+                      },
                     }}
                   />
                 )}
@@ -307,6 +347,61 @@ export default function PricingSection() {
                       </Typography>
                     </Box>
                   </Box>
+
+                  {/* AI Feature destacado */}
+                  {plan.hasAI && plan.aiFeature && (
+                    <Box
+                      sx={{
+                        mb: 3,
+                        p: 2,
+                        background: 'linear-gradient(135deg, rgba(0, 176, 240, 0.1) 0%, rgba(0, 76, 151, 0.05) 100%)',
+                        border: '1px solid rgba(0, 176, 240, 0.3)',
+                        borderRadius: 3,
+                        position: 'relative',
+                        overflow: 'hidden',
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: '2px',
+                          background: 'linear-gradient(90deg, #00B0F0, #004C97, #00B0F0)',
+                          backgroundSize: '200% 100%',
+                          animation: 'shimmer 2s linear infinite',
+                          '@keyframes shimmer': {
+                            '0%': { backgroundPosition: '200% 0' },
+                            '100%': { backgroundPosition: '-200% 0' },
+                          },
+                        },
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <SparkleIcon sx={{ color: '#00B0F0', fontSize: '1.2rem' }} />
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: '#004C97',
+                            fontWeight: 600,
+                            fontSize: '0.9rem',
+                          }}
+                        >
+                          {plan.aiFeature}
+                        </Typography>
+                      </Box>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: '#333',
+                          fontSize: '0.8rem',
+                          fontStyle: 'italic',
+                          mt: 0.5,
+                        }}
+                      >
+                        Asistente virtual inteligente incluido
+                      </Typography>
+                    </Box>
+                  )}
 
                   {/* Features */}
                   <List sx={{ mb: 4, flexGrow: 1 }}>
@@ -353,7 +448,7 @@ export default function PricingSection() {
               }}
             >
               <strong>¿Necesitas un plan personalizado?</strong> Contáctanos para empresas con 
-              requerimientos específicos o múltiples sucursales.
+              requerimientos específicos o múltiples sucursales. Incluye IA personalizada.
             </Typography>
             
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>

@@ -21,6 +21,9 @@ import {
   TableRow,
   Paper,
   useTheme,
+  Switch,
+  FormControlLabel,
+  Badge,
 } from '@mui/material';
 import {
   CheckCircle as CheckIcon,
@@ -34,6 +37,8 @@ import {
   Assessment as ReportIcon,
   Support as SupportIcon,
   Security as SecurityIcon,
+  SmartToy as BotIcon,
+  AutoAwesome as SparkleIcon,
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
@@ -54,109 +59,157 @@ const staggerContainer = {
 // Plan data structure
 const plans = [
   {
-    id: 'esencial',
-    name: 'Plan Esencial',
-    price: 39900,
-    target: 'Emprendedores y microempresas',
-    description: 'Perfecto para emprender con las herramientas básicas',
+    id: 'kickstart',
+    name: 'Ally Kickstart',
+    monthlyPrice: 50000,
+    yearlyPrice: 600000,
+    target: 'Microempresas que inician su digitalización',
+    description: 'Herramientas esenciales para cumplir requisitos básicos',
     isPopular: false,
     buttonText: 'Probar gratis 30 días',
     buttonVariant: 'outlined' as const,
+    hasAI: false,
     features: [
-      { text: 'Hasta 100 facturas electrónicas mensuales', icon: <SecurityIcon /> },
-      { text: '1 usuario + 1 contador', icon: <PeopleIcon /> },
+      { text: 'Facturación electrónica ilimitada DIAN', icon: <SecurityIcon /> },
+      { text: 'Hasta 2 usuarios (Admin + Contador)', icon: <PeopleIcon /> },
       { text: '1 bodega', icon: <InventoryIcon /> },
-      { text: 'POS y ventas simples', icon: <POSIcon /> },
-      { text: 'Soporte por chat', icon: <SupportIcon /> },
+      { text: 'POS básico para ventas simples', icon: <POSIcon /> },
+      { text: 'Contabilidad básica integrada', icon: <ReportIcon /> },
+      { text: 'Soporte vía chat estándar', icon: <SupportIcon /> },
+      { text: '1 GB de almacenamiento', icon: <SecurityIcon /> },
     ],
   },
   {
-    id: 'avanzado',
-    name: 'Plan Avanzado',
-    price: 79900,
+    id: 'boost',
+    name: 'Ally Boost',
+    monthlyPrice: 75000,
+    yearlyPrice: 900000,
     target: 'Pequeñas empresas en crecimiento',
-    description: 'El más elegido por empresas que buscan crecer',
+    description: 'El más elegido - Impulsa ventas con IA integrada',
     isPopular: true,
     buttonText: 'Solicitar demo',
     buttonVariant: 'contained' as const,
+    hasAI: true,
     features: [
-      { text: 'Facturación electrónica ilimitada', icon: <SecurityIcon /> },
-      { text: 'Hasta 4 usuarios', icon: <PeopleIcon /> },
-      { text: 'Hasta 3 bodegas', icon: <InventoryIcon /> },
-      { text: 'Traslados de inventario', icon: <POSIcon /> },
-      { text: 'Reportes básicos', icon: <ReportIcon /> },
+      { text: 'Todo lo de Kickstart +', icon: <CheckIcon /> },
+      { text: 'Hasta 600 facturas electrónicas/mes', icon: <SecurityIcon /> },
+      { text: 'Hasta 5 usuarios (todos los roles)', icon: <PeopleIcon /> },
+      { text: 'Hasta 3 bodegas + traslados', icon: <InventoryIcon /> },
+      { text: 'POS avanzado', icon: <POSIcon /> },
+      { text: 'Reportes avanzados y analítica', icon: <ReportIcon /> },
+      { text: 'Envío facturas por WhatsApp', icon: <BusinessIcon /> },
       { text: 'Soporte prioritario', icon: <SupportIcon /> },
+      { text: '3 GB de almacenamiento', icon: <SecurityIcon /> },
     ],
+    aiFeature: {
+      title: 'Chatbot IA Ally360',
+      description: 'Asistente virtual inteligente para consultas de negocio',
+      icon: <BotIcon />,
+    },
   },
   {
-    id: 'elite',
-    name: 'Plan Elite',
-    price: 149900,
+    id: 'supreme',
+    name: 'Ally Supreme',
+    monthlyPrice: 116000,
+    yearlyPrice: 1400000,
     target: 'Empresas medianas con operaciones complejas',
-    description: 'Funcionalidades completas para operaciones avanzadas',
+    description: 'Solución completa todo-en-uno',
     isPopular: false,
     buttonText: 'Agendar llamada',
     buttonVariant: 'outlined' as const,
+    hasAI: true,
     features: [
-      { text: 'Facturación ilimitada', icon: <SecurityIcon /> },
-      { text: 'Hasta 15 usuarios', icon: <PeopleIcon /> },
-      { text: 'Hasta 10 bodegas', icon: <InventoryIcon /> },
-      { text: 'KPIs, presupuestos, conciliación', icon: <ReportIcon /> },
-      { text: 'CRM básico incluido', icon: <BusinessIcon /> },
-      { text: 'Soporte personalizado', icon: <SupportIcon /> },
+      { text: 'Todo lo de Boost +', icon: <CheckIcon /> },
+      { text: 'Facturación electrónica ilimitada', icon: <SecurityIcon /> },
+      { text: 'Hasta 10 usuarios (todos los roles)', icon: <PeopleIcon /> },
+      { text: 'Hasta 10 bodegas + traslados', icon: <InventoryIcon /> },
+      { text: 'POS completo', icon: <POSIcon /> },
+      { text: 'Integraciones y API abierta', icon: <ReportIcon /> },
+      { text: 'Envío masivo por WhatsApp', icon: <BusinessIcon /> },
+      { text: 'Soporte personalizado + onboarding', icon: <SupportIcon /> },
+      { text: '5 GB de almacenamiento', icon: <SecurityIcon /> },
     ],
+    aiFeature: {
+      title: 'Chatbot IA Ally360 Premium',
+      description: 'IA avanzada con análisis predictivos y recomendaciones',
+      icon: <BotIcon />,
+    },
   },
 ];
 
 // Comparison data
 const comparisonFeatures = [
   {
+    feature: 'Precio mensual',
+    kickstart: 'COP $50,000',
+    boost: 'COP $75,000',
+    supreme: 'COP $116,000',
+  },
+  {
+    feature: 'Precio anual (2 meses gratis)',
+    kickstart: 'COP $600,000',
+    boost: 'COP $900,000',
+    supreme: 'COP $1,400,000',
+  },
+  {
     feature: 'Facturación electrónica',
-    esencial: 'Hasta 100',
-    avanzado: 'Ilimitada',
-    elite: 'Ilimitada',
+    kickstart: 'Ilimitada',
+    boost: 'Hasta 600/mes',
+    supreme: 'Ilimitada',
   },
   {
     feature: 'Usuarios incluidos',
-    esencial: '1 + contador',
-    avanzado: '4',
-    elite: '15',
+    kickstart: '2 (Admin + Contador)',
+    boost: '5 (todos los roles)',
+    supreme: '10 (todos los roles)',
   },
   {
-    feature: 'Bodegas',
-    esencial: '1',
-    avanzado: '3',
-    elite: '10',
-  },
-  {
-    feature: 'POS y ventas',
-    esencial: true,
-    avanzado: true,
-    elite: true,
+    feature: 'Bodegas/Sucursales',
+    kickstart: '1',
+    boost: '3',
+    supreme: '10',
   },
   {
     feature: 'Traslados entre bodegas',
-    esencial: false,
-    avanzado: true,
-    elite: true,
+    kickstart: false,
+    boost: true,
+    supreme: true,
   },
   {
-    feature: 'Reportes financieros avanzados',
-    esencial: false,
-    avanzado: 'Básico',
-    elite: 'Completo',
+    feature: 'Terminal POS',
+    kickstart: 'Básico',
+    boost: 'Avanzado',
+    supreme: 'Completo',
   },
   {
-    feature: 'CRM integrado',
-    esencial: false,
-    avanzado: false,
-    elite: true,
+    feature: 'Chatbot IA Ally360',
+    kickstart: false,
+    boost: true,
+    supreme: true,
+  },
+  {
+    feature: 'Envío facturas WhatsApp',
+    kickstart: false,
+    boost: 'Sí',
+    supreme: 'Masivo',
+  },
+  {
+    feature: 'Almacenamiento',
+    kickstart: '1 GB',
+    boost: '3 GB',
+    supreme: '5 GB',
+  },
+  {
+    feature: 'Reportes y analítica',
+    kickstart: 'Básicos',
+    boost: 'Avanzados',
+    supreme: 'Completos + API',
   },
   {
     feature: 'Soporte',
-    esencial: 'Básico',
-    avanzado: 'Prioritario',
-    elite: 'Personalizado',
+    kickstart: 'Chat estándar',
+    boost: 'Prioritario',
+    supreme: 'Personalizado + onboarding',
   },
 ];
 
@@ -167,12 +220,20 @@ const faqData = [
     answer: 'No, todos nuestros planes son sin permanencia. Puedes cancelar en cualquier momento sin penalización.',
   },
   {
+    question: '¿Qué es el Chatbot IA Ally360 incluido en los planes Boost y Supreme?',
+    answer: 'Es un asistente virtual inteligente que responde consultas sobre tu negocio en tiempo real, analiza datos y te brinda recomendaciones personalizadas para mejorar tu gestión empresarial.',
+  },
+  {
     question: '¿Cómo funciona la facturación electrónica con la DIAN?',
     answer: 'Ally360 está certificado por la DIAN y cumple con la Resolución 000042. Generamos, validamos y enviamos tus facturas electrónicas automáticamente.',
   },
   {
+    question: '¿Cuál es la diferencia entre el pago mensual y anual?',
+    answer: 'Con el pago anual obtienes 2 meses gratis (equivalente a un 16.7% de descuento). Puedes cambiar entre modalidades cuando gustes.',
+  },
+  {
     question: '¿Qué formas de pago aceptan?',
-    answer: 'Aceptamos tarjetas de crédito, débito, transferencias bancarias y PSE. El pago es mensual y se debita automáticamente.',
+    answer: 'Aceptamos tarjetas de crédito, débito, transferencias bancarias y PSE. El pago se debita automáticamente según tu plan elegido.',
   },
   {
     question: '¿Puedo cambiar de plan en cualquier momento?',
@@ -185,8 +246,10 @@ const faqData = [
 ];
 
 // PricingCard Component
-function PricingCard({ plan }: { plan: typeof plans[0] }) {
+function PricingCard({ plan, isYearly }: { plan: typeof plans[0], isYearly: boolean }) {
   const theme = useTheme();
+  const currentPrice = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
+  const monthlyEquivalent = isYearly ? Math.round(plan.yearlyPrice / 12) : plan.monthlyPrice;
 
   return (
     <motion.div variants={fadeInUp}>
@@ -203,6 +266,7 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
             transform: 'translateY(-4px)',
           },
           transition: 'all 0.3s ease-in-out',
+          overflow: 'visible',
         }}
       >
         {plan.isPopular && (
@@ -221,34 +285,164 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
           />
         )}
 
+        {/* AI Badge para planes que incluyen IA */}
+        {plan.hasAI && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: plan.isPopular ? 20 : -8,
+              right: -8,
+              zIndex: 2,
+            }}
+          >
+            <Badge
+              badgeContent={
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    background: 'linear-gradient(135deg, #00B0F0 0%, #004C97 100%)',
+                    color: 'white',
+                    px: 1.5,
+                    py: 0.5,
+                    borderRadius: 2,
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    boxShadow: '0 4px 12px rgba(0, 176, 240, 0.4)',
+                    animation: 'pulse 2s infinite',
+                    '@keyframes pulse': {
+                      '0%, 100%': { 
+                        boxShadow: '0 4px 12px rgba(0, 176, 240, 0.4)',
+                      },
+                      '50%': { 
+                        boxShadow: '0 8px 20px rgba(0, 176, 240, 0.6)',
+                        transform: 'scale(1.05)',
+                      },
+                    },
+                  }}
+                >
+                  <BotIcon sx={{ fontSize: '1rem' }} />
+                  IA
+                </Box>
+              }
+            />
+          </Box>
+        )}
+
         <CardContent sx={{ flexGrow: 1, p: 4 }}>
           <Box sx={{ textAlign: 'center', mb: 3 }}>
             <Typography variant="h4" component="h3" sx={{ fontWeight: 700, mb: 1, color: '#004C97' }}>
               {plan.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2, fontStyle: 'italic' }}>
               {plan.target}
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', mb: 1 }}>
-              <Typography variant="h3" component="span" sx={{ fontWeight: 700, color: '#004C97' }}>
-                ${plan.price.toLocaleString()}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-                / mes
-              </Typography>
+            
+            {/* Precio */}
+            <Box sx={{ mb: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', mb: 1 }}>
+                <Typography variant="h3" component="span" sx={{ fontWeight: 700, color: '#004C97' }}>
+                  ${currentPrice.toLocaleString()}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                  {isYearly ? '/año' : '/mes'}
+                </Typography>
+              </Box>
+              
+              {isYearly && (
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, mb: 1 }}>
+                  <Chip
+                    label="2 MESES GRATIS"
+                    size="small"
+                    sx={{
+                      backgroundColor: '#4CAF50',
+                      color: 'white',
+                      fontWeight: 600,
+                      fontSize: '0.7rem',
+                    }}
+                  />
+                </Box>
+              )}
+              
+              {isYearly && (
+                <Typography variant="body2" color="text.secondary">
+                  Equivale a ${monthlyEquivalent.toLocaleString()}/mes
+                </Typography>
+              )}
             </Box>
-            <Typography variant="body2" color="text.secondary">
+            
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
               {plan.description}
             </Typography>
           </Box>
 
-          <Stack spacing={2} sx={{ mb: 4 }}>
+          {/* AI Feature destacado */}
+          {plan.hasAI && plan.aiFeature && (
+            <Box
+              sx={{
+                mb: 3,
+                p: 2,
+                background: 'linear-gradient(135deg, rgba(0, 176, 240, 0.1) 0%, rgba(0, 76, 151, 0.05) 100%)',
+                border: '1px solid rgba(0, 176, 240, 0.3)',
+                borderRadius: 3,
+                position: 'relative',
+                overflow: 'hidden',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: 'linear-gradient(90deg, #00B0F0, #004C97, #00B0F0)',
+                  backgroundSize: '200% 100%',
+                  animation: 'shimmer 2s linear infinite',
+                  '@keyframes shimmer': {
+                    '0%': { backgroundPosition: '200% 0' },
+                    '100%': { backgroundPosition: '-200% 0' },
+                  },
+                },
+              }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    color: '#004C97',
+                    fontSize: '1.1rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  <SparkleIcon sx={{ color: '#00B0F0' }} />
+                  {plan.aiFeature.title}
+                </Box>
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: '#333',
+                  fontSize: '0.9rem',
+                  fontStyle: 'italic',
+                }}
+              >
+                {plan.aiFeature.description}
+              </Typography>
+            </Box>
+          )}
+
+          {/* Features */}
+          <Stack spacing={1.5} sx={{ mb: 4 }}>
             {plan.features.map((feature, index) => (
               <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ color: '#00B0F0', mr: 2, fontSize: '1.2rem' }}>
+                <Box sx={{ color: '#00B0F0', mr: 2, fontSize: '1.1rem' }}>
                   {feature.icon}
                 </Box>
-                <Typography variant="body2">{feature.text}</Typography>
+                <Typography variant="body2" sx={{ fontSize: '0.9rem' }}>
+                  {feature.text}
+                </Typography>
               </Box>
             ))}
           </Stack>
@@ -330,22 +524,46 @@ function PlanComparison() {
               <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 700 }}>Característica</TableCell>
-                  <TableCell align="center" sx={{ fontWeight: 700 }}>Esencial</TableCell>
+                  <TableCell align="center" sx={{ fontWeight: 700 }}>Ally Kickstart</TableCell>
                   <TableCell align="center" sx={{ fontWeight: 700, backgroundColor: '#e3f2fd' }}>
-                    Avanzado
+                    Ally Boost
+                    <Chip
+                      icon={<BotIcon />}
+                      label="IA"
+                      size="small"
+                      sx={{
+                        ml: 1,
+                        background: 'linear-gradient(135deg, #00B0F0 0%, #004C97 100%)',
+                        color: 'white',
+                        fontSize: '0.7rem',
+                      }}
+                    />
                   </TableCell>
-                  <TableCell align="center" sx={{ fontWeight: 700 }}>Elite</TableCell>
+                  <TableCell align="center" sx={{ fontWeight: 700 }}>
+                    Ally Supreme
+                    <Chip
+                      icon={<BotIcon />}
+                      label="IA"
+                      size="small"
+                      sx={{
+                        ml: 1,
+                        background: 'linear-gradient(135deg, #00B0F0 0%, #004C97 100%)',
+                        color: 'white',
+                        fontSize: '0.7rem',
+                      }}
+                    />
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {comparisonFeatures.map((row, index) => (
                   <TableRow key={index} sx={{ '&:nth-of-type(odd)': { backgroundColor: '#fafafa' } }}>
                     <TableCell sx={{ fontWeight: 500 }}>{row.feature}</TableCell>
-                    <TableCell align="center">{renderCellValue(row.esencial)}</TableCell>
+                    <TableCell align="center">{renderCellValue(row.kickstart)}</TableCell>
                     <TableCell align="center" sx={{ backgroundColor: '#f3f8ff' }}>
-                      {renderCellValue(row.avanzado)}
+                      {renderCellValue(row.boost)}
                     </TableCell>
-                    <TableCell align="center">{renderCellValue(row.elite)}</TableCell>
+                    <TableCell align="center">{renderCellValue(row.supreme)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -409,26 +627,52 @@ function CtaBanner() {
         mt: 8,
         borderRadius: 4,
         textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 20% 20%, rgba(0, 176, 240, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(0, 176, 240, 0.15) 0%, transparent 50%)
+          `,
+        },
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2 }}>
         <Typography
           variant="h2"
           component="h2"
           sx={{
             fontSize: { xs: '2rem', md: '2.75rem' },
             fontWeight: 700,
-            mb: 3,
+            mb: 2,
           }}
         >
           ¿Listo para transformar tu negocio con Ally360?
         </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 3 }}>
+          <BotIcon sx={{ color: '#00B0F0', fontSize: '2rem', mr: 1 }} />
+          <Typography
+            variant="h6"
+            sx={{
+              fontSize: { xs: '1.1rem', md: '1.25rem' },
+              opacity: 0.9,
+            }}
+          >
+            Incluye Chatbot IA en planes Ally Boost y Ally Supreme
+          </Typography>
+        </Box>
         <Typography
-          variant="h6"
+          variant="body1"
           sx={{
-            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            fontSize: { xs: '1rem', md: '1.1rem' },
             mb: 4,
-            opacity: 0.9,
+            opacity: 0.8,
           }}
         >
           Comienza gratis por 30 días o agenda una demo personalizada.
@@ -453,7 +697,7 @@ function CtaBanner() {
               },
             }}
           >
-            Probar gratis
+            Probar gratis 30 días
           </Button>
           <Button
             variant="outlined"
@@ -470,7 +714,7 @@ function CtaBanner() {
               },
             }}
           >
-            Agendar demo
+            Agendar demo con IA
           </Button>
         </Stack>
       </Container>
@@ -480,6 +724,8 @@ function CtaBanner() {
 
 // Main Page Component
 export default function PlanesPage() {
+  const [isYearly, setIsYearly] = useState(false);
+
   return (
     <Box sx={{ minHeight: '100vh' }}>
       {/* Header Section */}
@@ -516,10 +762,99 @@ export default function PlanesPage() {
                     lineHeight: 1.6,
                     maxWidth: 700,
                     mx: 'auto',
+                    mb: 4,
                   }}
                 >
                   Desde emprendedores hasta empresas con múltiples sedes. Escoge el plan que mejor se adapte a ti. 
                   Todos incluyen facturación electrónica DIAN y soporte.
+                </Typography>
+                
+                {/* Price Toggle Switch */}
+                <Box 
+                  sx={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    gap: 2, 
+                    mb: 2,
+                    p: 2,
+                    backgroundColor: 'rgba(0, 76, 151, 0.05)',
+                    borderRadius: 3,
+                    border: '1px solid rgba(0, 76, 151, 0.1)',
+                  }}
+                >
+                  <Typography 
+                    variant="body1" 
+                    sx={{ 
+                      fontWeight: !isYearly ? 600 : 400,
+                      color: !isYearly ? '#004C97' : '#666',
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
+                    Mensual
+                  </Typography>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={isYearly}
+                        onChange={(e) => setIsYearly(e.target.checked)}
+                        sx={{
+                          '& .MuiSwitch-switchBase.Mui-checked': {
+                            color: '#00B0F0',
+                          },
+                          '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                            backgroundColor: '#00B0F0',
+                          },
+                        }}
+                      />
+                    }
+                    label=""
+                    sx={{ margin: 0 }}
+                  />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Typography 
+                      variant="body1" 
+                      sx={{ 
+                        fontWeight: isYearly ? 600 : 400,
+                        color: isYearly ? '#004C97' : '#666',
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      Anual
+                    </Typography>
+                    {isYearly && (
+                      <Chip
+                        label="2 MESES GRATIS"
+                        size="small"
+                        sx={{
+                          backgroundColor: '#4CAF50',
+                          color: 'white',
+                          fontWeight: 600,
+                          fontSize: '0.7rem',
+                          animation: 'bounce 2s infinite',
+                          '@keyframes bounce': {
+                            '0%, 20%, 50%, 80%, 100%': {
+                              transform: 'translateY(0)',
+                            },
+                            '40%': {
+                              transform: 'translateY(-5px)',
+                            },
+                            '60%': {
+                              transform: 'translateY(-3px)',
+                            },
+                          },
+                        }}
+                      />
+                    )}
+                  </Box>
+                </Box>
+                
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ fontStyle: 'italic' }}
+                >
+                  💡 Los planes Ally Boost y Ally Supreme incluyen Chatbot con IA
                 </Typography>
               </motion.div>
             </Box>
@@ -543,7 +878,7 @@ export default function PlanesPage() {
             }}
           >
             {plans.map((plan) => (
-              <PricingCard key={plan.id} plan={plan} />
+              <PricingCard key={plan.id} plan={plan} isYearly={isYearly} />
             ))}
           </Box>
         </motion.div>
