@@ -12,8 +12,8 @@ export const navConfig = [
     path: '/servicios',
   },
   {
-    title: 'Blog',
-    path: '/blog',
+    title: 'IA Ally',
+    path: '/ia-ally',
   },
   {
     title: 'Contacto',

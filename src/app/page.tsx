@@ -11,6 +11,10 @@ const BenefitsSection = dynamic(() => import('@/components/sections/BenefitsSect
   loading: () => <SectionSkeleton />
 });
 
+const AICompactSection = dynamic(() => import('@/components/sections/AICompactSection'), {
+  loading: () => <SectionSkeleton />
+});
+
 const TargetSegmentSection = dynamic(() => import('@/components/sections/TargetSegmentSection'), {
   loading: () => <SectionSkeleton />
 });
@@ -56,6 +60,7 @@ export default function HomePage() {
       {/* Otras secciones se cargan con dynamic imports */}
       <WhatIsAlly360Section />
       <BenefitsSection />
+      <AICompactSection />
       <TargetSegmentSection />
       <ComparisonSection />
       <TestimonialsSection />

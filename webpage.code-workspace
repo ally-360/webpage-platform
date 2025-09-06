@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../pos-front"
+		},
+		{
+			"path": "../test-next"
+		}
+	],
+	"settings": {}
+}
